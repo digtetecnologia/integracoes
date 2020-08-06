@@ -1,0 +1,62 @@
+ABORTA MERGE
+git merge --abort
+
+LISTA BRANCHES LOCAIS
+git branch
+
+DELETA BRANCH LOCAL
+git branch -d BrunoMarcondes
+
+ATUALIZA LISTA DE BRANCHES REMOTA
+git remote update origin --prune
+
+ADICIONAR ARQUIVO NO COMMIT
+git add NOMEARQUIVO
+
+FAZ O COMMIT COM UMA MENSAGEM
+git commit -a -m "Texto"
+
+FAZ O PUSH
+git push
+
+TROCA PARA BRANCH DESENVOLVIMENTO
+git checkout Desenvolvimento
+
+MERGE DE RAMAISUTEIS INTO DESENVOLVIMENTO
+git checkout Desenvolvimento
+git merge RamaisUteis
+
+VOLTA ALTERACOES DOS ARQUIVOS TRACKED
+git reset HEAD --hard
+
+REMOVE ARQUIVOS UNTRACKED
+git clean -f
+
+REMOVER ARQUIVOS E DIRETORIOS UNTRACKED
+git clean -fd
+
+REMOVER ARQUIVOS E DIRETORIOS UNTRACKED E IGNORADOS
+git clean -fdx
+
+ALTERAR MENSAGEM DO ULTIMO COMMIT
+git commit --amend
+
+MOSTRA DIFERÊNÇAS ENTRE COMMIT LOCAL E REMOTO
+git log origin/Desenvolvimento..HEAD
+
+DELETA BRANCHES REMOTAS AUTOMATICAMENTE
+git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d
+
+==============================
+PASSO A PASSO PARA FAZER MERGE
+==============================
+Entrar na branch Desenvolvimento: git checkout Desenvolvimento
+Atualizar branch Desenvolvimento: git pull
+Entrar na branch específica (Enquetes): git checkout Enquetes
+Realizar merge de Desenvolvimento (que agora está atualizada) into Enquetes: git merge Desenvolvimento
+    - Aqui podem ocorrer conflitos, porém serão mais simples de resolver pois você saberá exatamente o que tem na sua branch que não pode morrer
+Realizar commit and push das alterações realizadas pelo merge: git push
+Voltar para a branch Desenvolvimento: git checkout Desenvolvimento
+Realizar merge da branch Enquetes (que agora está atualizada e sem conflitos) into Desenvolvimento: git merge Enquetes
+Se tudo ocorreu bem, você pode agora deletar sua branch local: git branch -d Enquetes
+E por último, deletar a branch remota: Entrar no TeamServices > Branches > All > Clicar na lixeira correspondente a branch específica (Enquetes)

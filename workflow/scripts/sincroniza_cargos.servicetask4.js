@@ -2,8 +2,8 @@ var parentDocumentId = 0;
 var colleagueId = "";
 var DATASET_NAME = "fdwt_estrutura_empresa_cargo"
 
-// Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev3.digte.com.br:8080
-var FLUIG_DOMAIN = "http://dev3.digte.com.br"
+// Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080
+var FLUIG_DOMAIN = ""
 
 function servicetask4(attempt, message) {
 	log.info("@@ Inicio do servico sincroniza_cargos");
@@ -13,8 +13,8 @@ function servicetask4(attempt, message) {
 		// Preencher as variáveis 'fluigUsuario' e 'fluigSenha' com a matricula e a senha de um usuário com papel admin de seu ambiente fluig alvo
 		// Você pode inserir as credenciais de acesso ao RP nesta sessão também
 		var fluigCompanyId = getValue("WKCompany");
-		var fluigUsuario = "leonardo.giraldi";
-		var fluigSenha = "Digte@123";
+		var fluigUsuario = "";
+		var fluigSenha = "";
 		
 		// Acesso ao RP
 		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:
@@ -42,7 +42,7 @@ function servicetask4(attempt, message) {
 			var objCargo = resultSet[i];
 			var c1 = DatasetFactory.createConstraint("cargoId", objCargo.cargoId, objCargo.cargoId, ConstraintType.MUST);
 			var c2 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
-			var dsCargo = DatasetFactory.getDataset("fdwt_estrutura_empresa_cargo", null, [c1, c2], null);
+			var dsCargo = DatasetFactory.getDataset(DATASET_NAME, null, [c1, c2], null);
 			
 			if (dsCargo != null && dsCargo.rowsCount > 0) {
 				if (needsToUpdate(objCargo, dsCargo)) {

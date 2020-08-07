@@ -1,0 +1,635 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>sincroniza_empresas</processId>
+    </processDefinitionPK>
+    <processDescription>sincroniza_empresas</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId></categoryId>
+    <managerEngineAllocationId></managerEngineAllocationId>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>sincroniza_empresas</processId>
+      <version>4</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>0</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>false</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Inicio Temporizador</stateDescription>
+      <instruction>Atividade de inicio por mensagem. Aguardando envio do sinal </instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Usuário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;leonardo.giraldi&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>190</positionX>
+      <positionY>246</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>12</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Executar sincronização</stateName>
+      <stateDescription>Executar sincronização</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>0</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>290</positionX>
+      <positionY>218</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>82</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>1</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+        <sequence>7</sequence>
+      </processStatePK>
+      <stateName>Intermediário</stateName>
+      <stateDescription>Intermediário</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>380</positionX>
+      <positionY>288</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>43</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>4</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </processStatePK>
+      <stateName>Fim - Sucesso</stateName>
+      <stateDescription>Fim - Sucesso</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>520</positionX>
+      <positionY>246</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+        <sequence>6</sequence>
+      </processStatePK>
+      <stateName>Fim - Erro</stateName>
+      <stateDescription>Fim - Erro</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>520</positionX>
+      <positionY>340</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list/>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+        <linkSequence>8</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>3</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+        <linkSequence>9</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+        <linkSequence>10</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>7</initialStateSequence>
+      <finalStateSequence>6</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>servicetask4</eventId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>var parentDocumentId = 0;
+var colleagueId = &quot;&quot;;
+var DATASET_NAME = &quot;fdwt_empresas&quot;
+
+// Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev3.digte.com.br:8080
+var FLUIG_DOMAIN = &quot;http://dev3.digte.com.br&quot;
+
+function servicetask4(attempt, message) {
+	log.info(&quot;@@ Inicio do servico sincroniza_empresas&quot;);
+	
+	try {
+		// Credenciais para consumo do serviço de fichas do fluig (ECMCardService)
+		// Preencher as variáveis &apos;fluigUsuario&apos; e &apos;fluigSenha&apos; com a matricula e a senha de um usuário com papel admin de seu ambiente fluig alvo
+		// Você pode inserir as credenciais de acesso ao RP nesta sessão também
+		var fluigCompanyId = getValue(&quot;WKCompany&quot;);
+		var fluigUsuario = &quot;leonardo.giraldi&quot;;
+		var fluigSenha = &quot;Digte@123&quot;;
+		
+		// Acesso ao RP
+		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:
+		// 1. empresaId: Código do empresa
+		// 2. descricao: Nome do empresa
+		// Precisamos das seguintes ações:
+		// 1. Para cada empresa retornado de seu RP, preencha o objeto &apos;objEmpresa&apos; com as devidas informações
+		// 2. Para cada &apos;objEmpresa&apos; criado, adicione o mesmo no array &apos;resultSet&apos;
+
+		var resultSet = [];
+
+		// Seu trecho de código
+			var descricao = &apos;Empresa 001 Atualizado&apos;;
+			var empresaId = &apos;empresa001&apos;;
+
+			var objEmpresa = {
+				descricao: descricao,
+				empresaId: empresaId
+			};
+
+			resultSet.push(objEmpresa);
+		// ...
+
+		for (var i = 0; i &lt; resultSet.length; i++) {
+			var objEmpresa = resultSet[i];
+			var c1 = DatasetFactory.createConstraint(&quot;empresaId&quot;, objEmpresa.empresaId, objEmpresa.empresaId, ConstraintType.MUST);
+			var c2 = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);
+			var dsEmpresa = DatasetFactory.getDataset(DATASET_NAME, null, [c1, c2], null);
+			
+			if (dsEmpresa != null &amp;&amp; dsEmpresa.rowsCount &gt; 0) {
+				if (needsToUpdate(objEmpresa, dsEmpresa)) {
+					updateCard(dsEmpresa, objEmpresa, fluigCompanyId, fluigUsuario, fluigSenha);
+				}
+				else {
+					continue;
+				}
+			}
+			else {
+				createCard(objEmpresa, fluigCompanyId, fluigUsuario, fluigSenha);
+			}
+		}
+
+		log.info(&quot;@@ Fim do servico sincroniza_empresas&quot;);
+
+	} catch (e) {
+		log.info(&quot;@@ Erro, estourou uma excecao&quot;);
+		log.info(&quot;@@ e.message: &quot; + e.toString());
+		log.info(&quot;@@ Fim do servico sincroniza_empresas&quot;);
+	}
+}
+
+function needsToUpdate(objEmpresa, dsEmpresa) {
+	var update = false;
+
+	if (dsEmpresa.getValue(0, &quot;empresaId&quot;) != objEmpresa.empresaId || 
+		dsEmpresa.getValue(0, &quot;descricao&quot;) != objEmpresa.descricao) {
+			update = true;
+	}
+
+	return update;
+}
+
+function updateCard(dsEmpresa, objEmpresa, fluigCompanyId, fluigUsuario, fluigSenha) {
+	var cardId = dsEmpresa.getValue(0, &quot;metadata#Id&quot;);
+
+	if (cardId != 0) {
+		var serviceUrl = FLUIG_DOMAIN + &quot;/webdesk/ECMCardService?wsdl&quot;
+		var javaNetUrl = new java.net.URL(serviceUrl);
+
+		var connection = javaNetUrl.openConnection();
+		connection.setDoOutput(true);
+		connection.setRequestMethod(&quot;POST&quot;);
+		connection.setRequestProperty(&quot;Content-Type&quot;, &quot;text/xml; charset=utf-8&quot;);
+		connection.setRequestProperty(&quot;SOAPAction&quot;, &quot;updateCardData&quot;);
+		
+		var arrFields = returnFormFields(objEmpresa)
+
+		var postData = new java.lang.StringBuilder();
+		postData.append(&apos;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ws=&quot;http://ws.dm.ecm.technology.totvs.com/&quot;&gt;&apos;);
+			postData.append(&apos;&lt;soapenv:Header/&gt;&apos;);
+			postData.append(&apos;&lt;soapenv:Body&gt;&apos;);
+				postData.append(&apos;&lt;ws:updateCardData&gt;&apos;);
+					postData.append(&apos;&lt;companyId&gt;&apos; + fluigCompanyId + &apos;&lt;/companyId&gt;&apos;);
+					postData.append(&apos;&lt;username&gt;&apos; + fluigUsuario + &apos;&lt;/username&gt;&apos;);
+					postData.append(&apos;&lt;password&gt;&apos; + fluigSenha + &apos;&lt;/password&gt;&apos;);
+					postData.append(&apos;&lt;cardId&gt;&apos; + cardId + &apos;&lt;/cardId&gt;&apos;);
+					postData.append(&apos;&lt;cardData&gt;&apos;);
+					for (var i = 0; i &lt; arrFields.length; i++) {
+						postData.append(&apos;&lt;item&gt;&apos;);
+							postData.append(&apos;&lt;field&gt;&apos; + arrFields[i].fieldName + &apos;&lt;/field&gt;&apos;);
+							postData.append(&apos;&lt;value name=&quot;&apos; + arrFields[i].fieldName + &apos;&quot;&gt;&apos; + arrFields[i].fieldValue + &apos;&lt;/value&gt;&apos;);
+						postData.append(&apos;&lt;/item&gt;&apos;);
+					}
+					postData.append(&apos;&lt;/cardData&gt;&apos;);
+				postData.append(&apos;&lt;/ws:updateCardData&gt;&apos;);
+			postData.append(&apos;&lt;/soapenv:Body&gt;&apos;);
+		postData.append(&apos;&lt;/soapenv:Envelope&gt;&apos;);
+
+		var os = connection.getOutputStream();
+		os.write(postData.toString().getBytes());
+		os.flush();
+		
+		var responseCode = connection.getResponseCode();
+
+		log.info(&quot;@@ Atualizado empresa &quot; + objEmpresa.empresaId + &quot;:&quot; + responseCode )
+	}
+	else {
+		return false;
+	}
+}
+
+function createCard (objEmpresa, fluigCompanyId, fluigUsuario, fluigSenha) {
+    if (parentDocumentId == 0) {
+		var c1 = DatasetFactory.createConstraint(&quot;datasetName&quot;, DATASET_NAME, DATASET_NAME, ConstraintType.MUST);
+		var c2 = DatasetFactory.createConstraint(&quot;activeVersion&quot;, true, true, ConstraintType.MUST);
+		var dsDocument = DatasetFactory.getDataset(&quot;document&quot;, null, [c1, c2], null);
+
+		if (dsDocument != null &amp;&amp; dsDocument.rowsCount &gt; 0) {
+			parentDocumentId = dsDocument.getValue(0, &quot;documentPK.documentId&quot;);
+			colleagueId = dsDocument.getValue(0, &quot;colleagueId&quot;);
+		}
+    }
+    
+	var serviceUrl = FLUIG_DOMAIN + &quot;/webdesk/ECMCardService?wsdl&quot;
+	var javaNetUrl = new java.net.URL(serviceUrl);
+
+	var connection = javaNetUrl.openConnection();
+    connection.setDoOutput(true);
+    connection.setRequestMethod(&quot;POST&quot;);
+    connection.setRequestProperty(&quot;Content-Type&quot;, &quot;text/xml; charset=utf-8&quot;);
+	connection.setRequestProperty(&quot;SOAPAction&quot;, &quot;createCard&quot;);
+	
+	var arrFields = returnFormFields(objEmpresa)
+
+	var postData = new java.lang.StringBuilder();
+    postData.append(&apos;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ws=&quot;http://ws.dm.ecm.technology.totvs.com/&quot;&gt;&apos;);
+        postData.append(&apos;&lt;soapenv:Header/&gt;&apos;);
+        postData.append(&apos;&lt;soapenv:Body&gt;&apos;);
+            postData.append(&apos;&lt;ws:createCard&gt;&apos;);
+                postData.append(&apos;&lt;companyId&gt;&apos; + fluigCompanyId + &apos;&lt;/companyId&gt;&apos;);
+                postData.append(&apos;&lt;username&gt;&apos; + fluigUsuario + &apos;&lt;/username&gt;&apos;);
+                postData.append(&apos;&lt;password&gt;&apos; + fluigSenha + &apos;&lt;/password&gt;&apos;);
+                postData.append(&apos;&lt;card&gt;&apos;);
+                    postData.append(&apos;&lt;item&gt;&apos;);
+                    for (var i = 0; i &lt; arrFields.length; i++) {
+                        postData.append(&apos;&lt;cardData&gt;&apos;);
+                            postData.append(&apos;&lt;field&gt;&apos; + arrFields[i].fieldName + &apos;&lt;/field&gt;&apos;);
+                            postData.append(&apos;&lt;value name=&quot;&apos; + arrFields[i].fieldName + &apos;&quot;&gt;&apos; + arrFields[i].fieldValue + &apos;&lt;/value&gt;&apos;);
+                        postData.append(&apos;&lt;/cardData&gt;&apos;);
+                    }
+						postData.append(&apos;&lt;parentDocumentId&gt;&apos; + parentDocumentId + &apos;&lt;/parentDocumentId&gt;&apos;);
+						postData.append(&apos;&lt;documentDescription&gt;&apos; + objEmpresa.descricao + &apos;&lt;/documentDescription&gt;&apos;);
+                    postData.append(&apos;&lt;/item&gt;&apos;);
+                postData.append(&apos;&lt;/card&gt;&apos;);
+        postData.append(&apos;&lt;/ws:createCard&gt;&apos;);
+        postData.append(&apos;&lt;/soapenv:Body&gt;&apos;);
+	postData.append(&apos;&lt;/soapenv:Envelope&gt;&apos;);
+	
+	var os = connection.getOutputStream();
+    os.write(postData.toString().getBytes());
+	os.flush();
+	
+	var responseCode = connection.getResponseCode();
+
+	log.info(&quot;@@ Criado empresa &quot; + objEmpresa.empresaId + &quot;:&quot; + responseCode )
+}
+
+function returnFormFields(objEmpresa) {    
+    var arrFields = [];
+    var arrColumns = [&quot;empresaId&quot;, &quot;descricao&quot;];
+    
+    for (var i = 0; i &lt; arrColumns.length; i++) {
+        var fieldObj = {
+            fieldName: arrColumns[i],
+            fieldValue: objEmpresa[arrColumns[i]]
+        };
+        
+        arrFields.push(fieldObj);
+    }
+    
+    return arrFields;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>281</height>
+      <width>31</width>
+      <positionX>100</positionX>
+      <positionY>120</positionY>
+      <stateName>Sincroniza Cargos</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>281</height>
+      <width>601</width>
+      <positionX>140</positionX>
+      <positionY>120</positionY>
+      <stateName>Administrador</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>4</version>
+        <linkSequence>10</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>394</positionX>
+      <positionY>357</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list>
+    <ProcessStateTrigger>
+      <processStateTriggerPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>4</version>
+        <stateSequence>3</stateSequence>
+        <triggerSequence>0</triggerSequence>
+      </processStateTriggerPK>
+      <runType>6</runType>
+      <type>2</type>
+      <timeTrigger>0:0:0</timeTrigger>
+      <frequencia>SUN,MON,TUE,WED,THU,FRI,SAT</frequencia>
+    </ProcessStateTrigger>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessStateService>
+      <companyId>1</companyId>
+      <processId>sincroniza_empresas</processId>
+      <version>1</version>
+      <sequence>4</sequence>
+      <attempts>0</attempts>
+      <sucessFullMessage>Integração executada com sucesso</sucessFullMessage>
+      <serviceName></serviceName>
+      <frequency>1</frequency>
+      <frequencyType>0</frequencyType>
+    </ProcessStateService>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

@@ -3,6 +3,8 @@ Este repositório é dedicado aos processos de integração entre os RPs e os fo
 
 ## Processos disponíveis
 1. Sincronização de Cargos: sincroniza_cargos
+2. Sincronização de Empresas: sincroniza_empresas
+3. Sincronização de Unidades: sincroniza_unidades
 
 ## Configuração
 1. Faça um fork deste repositório

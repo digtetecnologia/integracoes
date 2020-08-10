@@ -2,19 +2,18 @@ var parentDocumentId = 0;
 var colleagueId = "";
 var DATASET_NAME = "fdwt_lojas"
 
-// Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev3.digte.com.br:8080
-var FLUIG_DOMAIN = ""
+var FLUIG_DOMAIN = "<DOMINIO_DO_FLUIG>" // Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080
 
 function servicetask4(attempt, message) {
 	log.info("@@ Inicio do servico sincroniza_unidades");
 	
 	try {
 		// Credenciais para consumo do serviço de fichas do fluig (ECMCardService)
-		// Preencher as variáveis 'fluigUsuario' e 'fluigSenha' com a matricula e a senha de um usuário com papel admin de seu ambiente fluig alvo
+		// Preencher as variáveis 'fluigUsuario' e 'fluigSenha' com a identificação e a senha de um usuário com papel admin de seu ambiente fluig alvo
 		// Você pode inserir as credenciais de acesso ao RP nesta sessão também
 		var fluigCompanyId = getValue("WKCompany");
-		var fluigUsuario = "";
-		var fluigSenha = "";
+		var fluigUsuario = "<CODIGO_DO_USUARIO>"; // Informe aqui a identificação do usuário
+		var fluigSenha = "<SENHA_DO_USUARIO>"; // Informe aqui a senha do usuário
 		
 		// Acesso ao RP
 		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:
@@ -41,48 +40,31 @@ function servicetask4(attempt, message) {
 
 		var resultSet = [];
 
-		// Seu trecho de código
-            var lojaBairro = '';
-            var lojaCEP = '';
-            var lojaCelular = '';
-            var lojaCidade = '';
-            var lojaCnpjCpf = '';
-            var lojaComplemento = '';
-            var lojaEmail = '';
-            var lojaEndereco = '';
-            var lojaEstado = '';
-            var lojaCodigo = '';
-            var lojaNome = '';
-            var lojaNumero = '';
-            var lojaPais = '';
-            var lojaRazaoSocial = '';
-            var lojaTelefone = '';
-            var nomeLojaCidade = '';
-            var validarEndereco = '';
-
+		// Inicio - Seu trecho de código para incluir os cargos no array resultSet
 			var objUnidade = {
-                lojaBairro: lojaBairro,
-                lojaCEP: lojaCEP,
-                lojaCelular: lojaCelular,
-                lojaCidade: lojaCidade,
-                lojaCnpjCpf: lojaCnpjCpf,
-                lojaComplemento: lojaComplemento,
-                lojaEmail: lojaEmail,
-                lojaEndereco: lojaEndereco,
-                lojaEstado: lojaEstado,
-                lojaCodigo: lojaCodigo,
-                lojaNome: lojaNome,
-                lojaNumero: lojaNumero,
-                lojaPais: lojaPais,
-                lojaRazaoSocial: lojaRazaoSocial,
-                lojaTelefone: lojaTelefone,
-                nomeLojaCidade: nomeLojaCidade,
-                validarEndereco: validarEndereco
+                lojaBairro: 'Santana',
+                lojaCEP: '98765-98',
+                lojaCelular: '(11) 98765-0987',
+                lojaCidade: 'São Paulo',
+                lojaCnpjCpf: '99.999.999/9999-99',
+                lojaComplemento: 'Conjunto 105',
+                lojaEmail: 'contato@mail.com.br',
+                lojaEndereco: 'Avenida Braz Leme',
+                lojaEstado: 'SP',
+                lojaCodigo: '16351236',
+                lojaNome: 'Unidade Zona Norte',
+                lojaNumero: '1000',
+                lojaPais: 'Brasil',
+                lojaRazaoSocial: 'Digte Tecnologia da Informação LTDA.',
+                lojaTelefone: '(11) 8765-0987',
+                nomeLojaCidade: 'São Paulo - SP',
+                validarEndereco: 'sim'
 			};
 
 			resultSet.push(objUnidade);
-		// ...
+		// Fim - Seu trecho de código para incluir os cargos no array resultSet
 
+        // A partir daqui não é necessário alterações no código
 		for (var i = 0; i < resultSet.length; i++) {
 			var objUnidade = resultSet[i];
 			var c1 = DatasetFactory.createConstraint("lojaCodigo", objUnidade.lojaCodigo, objUnidade.lojaCodigo, ConstraintType.MUST);

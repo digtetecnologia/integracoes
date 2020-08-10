@@ -2,19 +2,18 @@ var parentDocumentId = 0;
 var colleagueId = "";
 var DATASET_NAME = "fdwt_empresas"
 
-// Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev3.digte.com.br:8080
-var FLUIG_DOMAIN = ""
+var FLUIG_DOMAIN = "<DOMINIO_DO_FLUIG>" // Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080
 
 function servicetask4(attempt, message) {
 	log.info("@@ Inicio do servico sincroniza_empresas");
 	
 	try {
 		// Credenciais para consumo do serviço de fichas do fluig (ECMCardService)
-		// Preencher as variáveis 'fluigUsuario' e 'fluigSenha' com a matricula e a senha de um usuário com papel admin de seu ambiente fluig alvo
+		// Preencher as variáveis 'fluigUsuario' e 'fluigSenha' com a identificação e a senha de um usuário com papel admin de seu ambiente fluig alvo
 		// Você pode inserir as credenciais de acesso ao RP nesta sessão também
 		var fluigCompanyId = getValue("WKCompany");
-		var fluigUsuario = "";
-		var fluigSenha = "";
+		var fluigUsuario = "<CODIGO_DO_USUARIO>"; // Informe aqui a identificação do usuário
+		var fluigSenha = "<SENHA_DO_USUARIO>"; // Informe aqui a senha do usuário
 		
 		// Acesso ao RP
 		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:
@@ -26,18 +25,16 @@ function servicetask4(attempt, message) {
 
 		var resultSet = [];
 
-		// Seu trecho de código
-			var descricao = '';
-			var empresaId = '';
-
+		// Inicio - Seu trecho de código para incluir as empresas no array resultSet
 			var objEmpresa = {
-				descricao: descricao,
-				empresaId: empresaId
+				descricao: 'Digte',
+				empresaId: '37842347'
 			};
 
 			resultSet.push(objEmpresa);
-		// ...
-
+		// Fim - Seu trecho de código para incluir as empresas no array resultSet
+		
+		// A partir daqui não é necessário alterações no código
 		for (var i = 0; i < resultSet.length; i++) {
 			var objEmpresa = resultSet[i];
 			var c1 = DatasetFactory.createConstraint("empresaId", objEmpresa.empresaId, objEmpresa.empresaId, ConstraintType.MUST);

@@ -147,6 +147,56 @@
         <companyId>1</companyId>
         <processId>sincroniza_cargos</processId>
         <version>1</version>
+        <sequence>11</sequence>
+      </processStatePK>
+      <stateName>Analisar erro</stateName>
+      <stateDescription>Analisar erro</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>430</positionX>
+      <positionY>345</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>sincroniza_cargos</processId>
+        <version>1</version>
         <sequence>8</sequence>
       </processStatePK>
       <stateName>Intermediário</stateName>
@@ -218,7 +268,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>520</positionX>
+      <positionX>690</positionX>
       <positionY>246</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -265,8 +315,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>520</positionX>
-      <positionY>340</positionY>
+      <positionX>690</positionX>
+      <positionY>357</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -315,6 +365,23 @@
       <initialStateSequence>4</initialStateSequence>
       <finalStateSequence>6</finalStateSequence>
       <returnLabel></returnLabel>
+      <name>Sucesso ao sincronizar</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_cargos</processId>
+        <version>1</version>
+        <linkSequence>12</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>8</initialStateSequence>
+      <finalStateSequence>11</finalStateSequence>
+      <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
@@ -325,14 +392,31 @@
         <companyId>1</companyId>
         <processId>sincroniza_cargos</processId>
         <version>1</version>
-        <linkSequence>10</linkSequence>
+        <linkSequence>13</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>8</initialStateSequence>
+      <initialStateSequence>11</initialStateSequence>
       <finalStateSequence>9</finalStateSequence>
       <returnLabel></returnLabel>
-      <name></name>
+      <name>Cancelar sincronização</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_cargos</processId>
+        <version>1</version>
+        <linkSequence>14</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>11</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Sincronizar novamente</name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
@@ -351,19 +435,18 @@
 var colleagueId = &quot;&quot;;&#xd;
 var DATASET_NAME = &quot;fdwt_estrutura_empresa_cargo&quot;&#xd;
 &#xd;
-// Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev3.digte.com.br:8080&#xd;
-var FLUIG_DOMAIN = &quot;http://dev3.digte.com.br&quot;&#xd;
+var FLUIG_DOMAIN = &quot;&lt;DOMINIO_DO_FLUIG&gt;&quot; // Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080&#xd;
 &#xd;
 function servicetask4(attempt, message) {&#xd;
 	log.info(&quot;@@ Inicio do servico sincroniza_cargos&quot;);&#xd;
 	&#xd;
 	try {&#xd;
 		// Credenciais para consumo do serviço de fichas do fluig (ECMCardService)&#xd;
-		// Preencher as variáveis &apos;fluigUsuario&apos; e &apos;fluigSenha&apos; com a matricula e a senha de um usuário com papel admin de seu ambiente fluig alvo&#xd;
+		// Preencher as variáveis &apos;fluigUsuario&apos; e &apos;fluigSenha&apos; com a identificação e a senha de um usuário com papel admin de seu ambiente fluig alvo&#xd;
 		// Você pode inserir as credenciais de acesso ao RP nesta sessão também&#xd;
 		var fluigCompanyId = getValue(&quot;WKCompany&quot;);&#xd;
-		var fluigUsuario = &quot;leonardo.giraldi&quot;;&#xd;
-		var fluigSenha = &quot;Digte@123&quot;;&#xd;
+		var fluigUsuario = &quot;&lt;CODIGO_DO_USUARIO&gt;&quot;; // Informe aqui a identificação do usuário&#xd;
+		var fluigSenha = &quot;&lt;SENHA_DO_USUARIO&gt;&quot;; // Informe aqui a senha do usuário&#xd;
 		&#xd;
 		// Acesso ao RP&#xd;
 		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:&#xd;
@@ -375,23 +458,21 @@ function servicetask4(attempt, message) {&#xd;
 &#xd;
 		var resultSet = [];&#xd;
 &#xd;
-		// Seu trecho de código&#xd;
-			var cargoNome = &apos;&apos;;&#xd;
-			var cargoId = &apos;&apos;;&#xd;
-&#xd;
+		// Inicio - Seu trecho de código para incluir os cargos no array resultSet&#xd;
 			var objCargo = {&#xd;
-				cargoNome: cargoNome,&#xd;
-				cargoId: cargoId&#xd;
+				cargoNome: &apos;Analista de Dados&apos;,&#xd;
+				cargoId: &apos;6435438&apos;&#xd;
 			};&#xd;
 &#xd;
 			resultSet.push(objCargo);&#xd;
-		// ...&#xd;
+		// Fim - Seu trecho de código para incluir os cargos no array resultSet&#xd;
 &#xd;
+		// A partir daqui não é necessário alterações no código&#xd;
 		for (var i = 0; i &lt; resultSet.length; i++) {&#xd;
 			var objCargo = resultSet[i];&#xd;
 			var c1 = DatasetFactory.createConstraint(&quot;cargoId&quot;, objCargo.cargoId, objCargo.cargoId, ConstraintType.MUST);&#xd;
 			var c2 = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);&#xd;
-			var dsCargo = DatasetFactory.getDataset(&quot;fdwt_estrutura_empresa_cargo&quot;, null, [c1, c2], null);&#xd;
+			var dsCargo = DatasetFactory.getDataset(DATASET_NAME, null, [c1, c2], null);&#xd;
 			&#xd;
 			if (dsCargo != null &amp;&amp; dsCargo.rowsCount &gt; 0) {&#xd;
 				if (needsToUpdate(objCargo, dsCargo)) {&#xd;
@@ -552,7 +633,7 @@ function returnFormFields(objCargo) {    &#xd;
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>281</height>
+      <height>431</height>
       <width>601</width>
       <positionX>140</positionX>
       <positionY>120</positionY>
@@ -568,7 +649,7 @@ function returnFormFields(objCargo) {    &#xd;
     </SwimLane>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>281</height>
+      <height>431</height>
       <width>31</width>
       <positionX>100</positionX>
       <positionY>120</positionY>
@@ -591,11 +672,33 @@ function returnFormFields(objCargo) {    &#xd;
         <companyId>1</companyId>
         <processId>sincroniza_cargos</processId>
         <version>11</version>
-        <linkSequence>10</linkSequence>
+        <linkSequence>12</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>394</positionX>
-      <positionY>357</positionY>
+      <positionY>375</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_cargos</processId>
+        <version>11</version>
+        <linkSequence>14</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>482</positionX>
+      <positionY>463</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_cargos</processId>
+        <version>11</version>
+        <linkSequence>14</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>343</positionX>
+      <positionY>463</positionY>
     </ProcessLinkBend>
   </list>
   <list>

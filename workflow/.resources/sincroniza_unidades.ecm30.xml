@@ -147,6 +147,56 @@
         <companyId>1</companyId>
         <processId>sincroniza_unidades</processId>
         <version>1</version>
+        <sequence>10</sequence>
+      </processStatePK>
+      <stateName>Analisar erro</stateName>
+      <stateDescription>Analisar erro</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>430</positionX>
+      <positionY>350</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>sincroniza_unidades</processId>
+        <version>1</version>
         <sequence>7</sequence>
       </processStatePK>
       <stateName>Intermediário</stateName>
@@ -218,7 +268,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>520</positionX>
+      <positionX>690</positionX>
       <positionY>246</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -241,10 +291,10 @@
         <companyId>1</companyId>
         <processId>sincroniza_unidades</processId>
         <version>1</version>
-        <sequence>6</sequence>
+        <sequence>12</sequence>
       </processStatePK>
-      <stateName>Fim - Erro</stateName>
-      <stateDescription>Fim - Erro</stateDescription>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
       <instruction>Atividade final do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -265,8 +315,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>520</positionX>
-      <positionY>340</positionY>
+      <positionX>690</positionX>
+      <positionY>362</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -315,6 +365,23 @@
       <initialStateSequence>4</initialStateSequence>
       <finalStateSequence>5</finalStateSequence>
       <returnLabel></returnLabel>
+      <name>Sucesso ao sincronizar</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_unidades</processId>
+        <version>1</version>
+        <linkSequence>11</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>7</initialStateSequence>
+      <finalStateSequence>10</finalStateSequence>
+      <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
@@ -325,14 +392,31 @@
         <companyId>1</companyId>
         <processId>sincroniza_unidades</processId>
         <version>1</version>
-        <linkSequence>10</linkSequence>
+        <linkSequence>13</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>7</initialStateSequence>
-      <finalStateSequence>6</finalStateSequence>
+      <initialStateSequence>10</initialStateSequence>
+      <finalStateSequence>12</finalStateSequence>
       <returnLabel></returnLabel>
-      <name></name>
+      <name>Cancelar sincronização</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_unidades</processId>
+        <version>1</version>
+        <linkSequence>14</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>10</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Sincronizar novamente</name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
@@ -351,19 +435,18 @@
 var colleagueId = &quot;&quot;;
 var DATASET_NAME = &quot;fdwt_lojas&quot;
 
-// Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev3.digte.com.br:8080
-var FLUIG_DOMAIN = &quot;http://dev3.digte.com.br&quot;
+var FLUIG_DOMAIN = &quot;&lt;DOMINIO_DO_FLUIG&gt;&quot; // Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080
 
 function servicetask4(attempt, message) {
 	log.info(&quot;@@ Inicio do servico sincroniza_unidades&quot;);
 	
 	try {
 		// Credenciais para consumo do serviço de fichas do fluig (ECMCardService)
-		// Preencher as variáveis &apos;fluigUsuario&apos; e &apos;fluigSenha&apos; com a matricula e a senha de um usuário com papel admin de seu ambiente fluig alvo
+		// Preencher as variáveis &apos;fluigUsuario&apos; e &apos;fluigSenha&apos; com a identificação e a senha de um usuário com papel admin de seu ambiente fluig alvo
 		// Você pode inserir as credenciais de acesso ao RP nesta sessão também
 		var fluigCompanyId = getValue(&quot;WKCompany&quot;);
-		var fluigUsuario = &quot;leonardo.giraldi&quot;;
-		var fluigSenha = &quot;Digte@123&quot;;
+		var fluigUsuario = &quot;&lt;CODIGO_DO_USUARIO&gt;&quot;; // Informe aqui a identificação do usuário
+		var fluigSenha = &quot;&lt;SENHA_DO_USUARIO&gt;&quot;; // Informe aqui a senha do usuário
 		
 		// Acesso ao RP
 		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:
@@ -390,48 +473,31 @@ function servicetask4(attempt, message) {
 
 		var resultSet = [];
 
-		// Seu trecho de código
-            var lojaBairro = &apos;Freguesia do Ó&apos;;
-            var lojaCEP = &apos;02925140&apos;;
-            var lojaCelular = &apos;99999&apos;;
-            var lojaCidade = &apos;São Paulo&apos;;
-            var lojaCnpjCpf = &apos;121212&apos;;
-            var lojaComplemento = &apos;CJ 105&apos;;
-            var lojaEmail = &apos;leogiraldimg@gmail.com&apos;;
-            var lojaEndereco = &apos;Rua Jesuíno de Brito&apos;;
-            var lojaEstado = &apos;SP&apos;;
-            var lojaCodigo = &apos;137192837&apos;;
-            var lojaNome = &apos;Unidade Zona Norte Atualizadad&apos;;
-            var lojaNumero = &apos;303&apos;;
-            var lojaPais = &apos;Brasil&apos;;
-            var lojaRazaoSocial = &apos;DIGTE TECNOLOGIA&apos;;
-            var lojaTelefone = &apos;34234&apos;;
-            var nomeLojaCidade = &apos;São Paulo - SP&apos;;
-            var validarEndereco = &apos;sim&apos;;
-
+		// Inicio - Seu trecho de código para incluir os cargos no array resultSet
 			var objUnidade = {
-                lojaBairro: lojaBairro,
-                lojaCEP: lojaCEP,
-                lojaCelular: lojaCelular,
-                lojaCidade: lojaCidade,
-                lojaCnpjCpf: lojaCnpjCpf,
-                lojaComplemento: lojaComplemento,
-                lojaEmail: lojaEmail,
-                lojaEndereco: lojaEndereco,
-                lojaEstado: lojaEstado,
-                lojaCodigo: lojaCodigo,
-                lojaNome: lojaNome,
-                lojaNumero: lojaNumero,
-                lojaPais: lojaPais,
-                lojaRazaoSocial: lojaRazaoSocial,
-                lojaTelefone: lojaTelefone,
-                nomeLojaCidade: nomeLojaCidade,
-                validarEndereco: validarEndereco
+                lojaBairro: &apos;Santana&apos;,
+                lojaCEP: &apos;98765-98&apos;,
+                lojaCelular: &apos;(11) 98765-0987&apos;,
+                lojaCidade: &apos;São Paulo&apos;,
+                lojaCnpjCpf: &apos;99.999.999/9999-99&apos;,
+                lojaComplemento: &apos;Conjunto 105&apos;,
+                lojaEmail: &apos;contato@mail.com.br&apos;,
+                lojaEndereco: &apos;Avenida Braz Leme&apos;,
+                lojaEstado: &apos;SP&apos;,
+                lojaCodigo: &apos;16351236&apos;,
+                lojaNome: &apos;Unidade Zona Norte&apos;,
+                lojaNumero: &apos;1000&apos;,
+                lojaPais: &apos;Brasil&apos;,
+                lojaRazaoSocial: &apos;Digte Tecnologia da Informação LTDA.&apos;,
+                lojaTelefone: &apos;(11) 8765-0987&apos;,
+                nomeLojaCidade: &apos;São Paulo - SP&apos;,
+                validarEndereco: &apos;sim&apos;
 			};
 
 			resultSet.push(objUnidade);
-		// ...
+		// Fim - Seu trecho de código para incluir os cargos no array resultSet
 
+        // A partir daqui não é necessário alterações no código
 		for (var i = 0; i &lt; resultSet.length; i++) {
 			var objUnidade = resultSet[i];
 			var c1 = DatasetFactory.createConstraint(&quot;lojaCodigo&quot;, objUnidade.lojaCodigo, objUnidade.lojaCodigo, ConstraintType.MUST);
@@ -612,7 +678,7 @@ function returnFormFields(objUnidade) {
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>281</height>
+      <height>431</height>
       <width>31</width>
       <positionX>100</positionX>
       <positionY>120</positionY>
@@ -628,7 +694,7 @@ function returnFormFields(objUnidade) {
     </SwimLane>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>281</height>
+      <height>431</height>
       <width>601</width>
       <positionX>140</positionX>
       <positionY>120</positionY>
@@ -651,11 +717,33 @@ function returnFormFields(objUnidade) {
         <companyId>1</companyId>
         <processId>sincroniza_unidades</processId>
         <version>7</version>
-        <linkSequence>10</linkSequence>
+        <linkSequence>11</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>394</positionX>
-      <positionY>357</positionY>
+      <positionY>379</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_unidades</processId>
+        <version>7</version>
+        <linkSequence>14</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>482</positionX>
+      <positionY>478</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_unidades</processId>
+        <version>7</version>
+        <linkSequence>14</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>343</positionX>
+      <positionY>478</positionY>
     </ProcessLinkBend>
   </list>
   <list>

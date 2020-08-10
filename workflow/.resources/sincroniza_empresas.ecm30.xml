@@ -147,6 +147,56 @@
         <companyId>1</companyId>
         <processId>sincroniza_empresas</processId>
         <version>1</version>
+        <sequence>10</sequence>
+      </processStatePK>
+      <stateName>Analisar erro</stateName>
+      <stateDescription>Analisar erro</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>430</positionX>
+      <positionY>360</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
         <sequence>7</sequence>
       </processStatePK>
       <stateName>Intermediário</stateName>
@@ -218,7 +268,7 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>520</positionX>
+      <positionX>690</positionX>
       <positionY>246</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
@@ -241,10 +291,10 @@
         <companyId>1</companyId>
         <processId>sincroniza_empresas</processId>
         <version>1</version>
-        <sequence>6</sequence>
+        <sequence>12</sequence>
       </processStatePK>
-      <stateName>Fim - Erro</stateName>
-      <stateDescription>Fim - Erro</stateDescription>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
       <instruction>Atividade final do processo</instruction>
       <deadlineTime>0</deadlineTime>
       <joint>false</joint>
@@ -265,8 +315,8 @@
       <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
       <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
       <automatic>false</automatic>
-      <positionX>520</positionX>
-      <positionY>340</positionY>
+      <positionX>690</positionX>
+      <positionY>372</positionY>
       <forecastedEffortType>0</forecastedEffortType>
       <forecastedEffort>0</forecastedEffort>
       <notifyManagerFollowUp>false</notifyManagerFollowUp>
@@ -315,6 +365,23 @@
       <initialStateSequence>4</initialStateSequence>
       <finalStateSequence>5</finalStateSequence>
       <returnLabel></returnLabel>
+      <name>Sucesso ao sincronizar</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+        <linkSequence>11</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>7</initialStateSequence>
+      <finalStateSequence>10</finalStateSequence>
+      <returnLabel></returnLabel>
       <name></name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
@@ -325,14 +392,31 @@
         <companyId>1</companyId>
         <processId>sincroniza_empresas</processId>
         <version>1</version>
-        <linkSequence>10</linkSequence>
+        <linkSequence>13</linkSequence>
       </processLinkPK>
       <actionLabel></actionLabel>
       <returnPermited>false</returnPermited>
-      <initialStateSequence>7</initialStateSequence>
-      <finalStateSequence>6</finalStateSequence>
+      <initialStateSequence>10</initialStateSequence>
+      <finalStateSequence>12</finalStateSequence>
       <returnLabel></returnLabel>
-      <name></name>
+      <name>Cancelar sincronização</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>1</version>
+        <linkSequence>14</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>10</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Sincronizar novamente</name>
       <automaticLink>false</automaticLink>
       <defaultLink>false</defaultLink>
       <type>0</type>
@@ -347,204 +431,201 @@
         <processId>sincroniza_empresas</processId>
         <version>1</version>
       </workflowProcessEventPK>
-      <eventDescription>var parentDocumentId = 0;
-var colleagueId = &quot;&quot;;
-var DATASET_NAME = &quot;fdwt_empresas&quot;
-
-// Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev3.digte.com.br:8080
-var FLUIG_DOMAIN = &quot;http://dev3.digte.com.br&quot;
-
-function servicetask4(attempt, message) {
-	log.info(&quot;@@ Inicio do servico sincroniza_empresas&quot;);
-	
-	try {
-		// Credenciais para consumo do serviço de fichas do fluig (ECMCardService)
-		// Preencher as variáveis &apos;fluigUsuario&apos; e &apos;fluigSenha&apos; com a matricula e a senha de um usuário com papel admin de seu ambiente fluig alvo
-		// Você pode inserir as credenciais de acesso ao RP nesta sessão também
-		var fluigCompanyId = getValue(&quot;WKCompany&quot;);
-		var fluigUsuario = &quot;leonardo.giraldi&quot;;
-		var fluigSenha = &quot;Digte@123&quot;;
-		
-		// Acesso ao RP
-		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:
-		// 1. empresaId: Código do empresa
-		// 2. descricao: Nome do empresa
-		// Precisamos das seguintes ações:
-		// 1. Para cada empresa retornado de seu RP, preencha o objeto &apos;objEmpresa&apos; com as devidas informações
-		// 2. Para cada &apos;objEmpresa&apos; criado, adicione o mesmo no array &apos;resultSet&apos;
-
-		var resultSet = [];
-
-		// Seu trecho de código
-			var descricao = &apos;Empresa 001 Atualizado&apos;;
-			var empresaId = &apos;empresa001&apos;;
-
-			var objEmpresa = {
-				descricao: descricao,
-				empresaId: empresaId
-			};
-
-			resultSet.push(objEmpresa);
-		// ...
-
-		for (var i = 0; i &lt; resultSet.length; i++) {
-			var objEmpresa = resultSet[i];
-			var c1 = DatasetFactory.createConstraint(&quot;empresaId&quot;, objEmpresa.empresaId, objEmpresa.empresaId, ConstraintType.MUST);
-			var c2 = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);
-			var dsEmpresa = DatasetFactory.getDataset(DATASET_NAME, null, [c1, c2], null);
-			
-			if (dsEmpresa != null &amp;&amp; dsEmpresa.rowsCount &gt; 0) {
-				if (needsToUpdate(objEmpresa, dsEmpresa)) {
-					updateCard(dsEmpresa, objEmpresa, fluigCompanyId, fluigUsuario, fluigSenha);
-				}
-				else {
-					continue;
-				}
-			}
-			else {
-				createCard(objEmpresa, fluigCompanyId, fluigUsuario, fluigSenha);
-			}
-		}
-
-		log.info(&quot;@@ Fim do servico sincroniza_empresas&quot;);
-
-	} catch (e) {
-		log.info(&quot;@@ Erro, estourou uma excecao&quot;);
-		log.info(&quot;@@ e.message: &quot; + e.toString());
-		log.info(&quot;@@ Fim do servico sincroniza_empresas&quot;);
-	}
-}
-
-function needsToUpdate(objEmpresa, dsEmpresa) {
-	var update = false;
-
-	if (dsEmpresa.getValue(0, &quot;empresaId&quot;) != objEmpresa.empresaId || 
-		dsEmpresa.getValue(0, &quot;descricao&quot;) != objEmpresa.descricao) {
-			update = true;
-	}
-
-	return update;
-}
-
-function updateCard(dsEmpresa, objEmpresa, fluigCompanyId, fluigUsuario, fluigSenha) {
-	var cardId = dsEmpresa.getValue(0, &quot;metadata#Id&quot;);
-
-	if (cardId != 0) {
-		var serviceUrl = FLUIG_DOMAIN + &quot;/webdesk/ECMCardService?wsdl&quot;
-		var javaNetUrl = new java.net.URL(serviceUrl);
-
-		var connection = javaNetUrl.openConnection();
-		connection.setDoOutput(true);
-		connection.setRequestMethod(&quot;POST&quot;);
-		connection.setRequestProperty(&quot;Content-Type&quot;, &quot;text/xml; charset=utf-8&quot;);
-		connection.setRequestProperty(&quot;SOAPAction&quot;, &quot;updateCardData&quot;);
-		
-		var arrFields = returnFormFields(objEmpresa)
-
-		var postData = new java.lang.StringBuilder();
-		postData.append(&apos;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ws=&quot;http://ws.dm.ecm.technology.totvs.com/&quot;&gt;&apos;);
-			postData.append(&apos;&lt;soapenv:Header/&gt;&apos;);
-			postData.append(&apos;&lt;soapenv:Body&gt;&apos;);
-				postData.append(&apos;&lt;ws:updateCardData&gt;&apos;);
-					postData.append(&apos;&lt;companyId&gt;&apos; + fluigCompanyId + &apos;&lt;/companyId&gt;&apos;);
-					postData.append(&apos;&lt;username&gt;&apos; + fluigUsuario + &apos;&lt;/username&gt;&apos;);
-					postData.append(&apos;&lt;password&gt;&apos; + fluigSenha + &apos;&lt;/password&gt;&apos;);
-					postData.append(&apos;&lt;cardId&gt;&apos; + cardId + &apos;&lt;/cardId&gt;&apos;);
-					postData.append(&apos;&lt;cardData&gt;&apos;);
-					for (var i = 0; i &lt; arrFields.length; i++) {
-						postData.append(&apos;&lt;item&gt;&apos;);
-							postData.append(&apos;&lt;field&gt;&apos; + arrFields[i].fieldName + &apos;&lt;/field&gt;&apos;);
-							postData.append(&apos;&lt;value name=&quot;&apos; + arrFields[i].fieldName + &apos;&quot;&gt;&apos; + arrFields[i].fieldValue + &apos;&lt;/value&gt;&apos;);
-						postData.append(&apos;&lt;/item&gt;&apos;);
-					}
-					postData.append(&apos;&lt;/cardData&gt;&apos;);
-				postData.append(&apos;&lt;/ws:updateCardData&gt;&apos;);
-			postData.append(&apos;&lt;/soapenv:Body&gt;&apos;);
-		postData.append(&apos;&lt;/soapenv:Envelope&gt;&apos;);
-
-		var os = connection.getOutputStream();
-		os.write(postData.toString().getBytes());
-		os.flush();
-		
-		var responseCode = connection.getResponseCode();
-
-		log.info(&quot;@@ Atualizado empresa &quot; + objEmpresa.empresaId + &quot;:&quot; + responseCode )
-	}
-	else {
-		return false;
-	}
-}
-
-function createCard (objEmpresa, fluigCompanyId, fluigUsuario, fluigSenha) {
-    if (parentDocumentId == 0) {
-		var c1 = DatasetFactory.createConstraint(&quot;datasetName&quot;, DATASET_NAME, DATASET_NAME, ConstraintType.MUST);
-		var c2 = DatasetFactory.createConstraint(&quot;activeVersion&quot;, true, true, ConstraintType.MUST);
-		var dsDocument = DatasetFactory.getDataset(&quot;document&quot;, null, [c1, c2], null);
-
-		if (dsDocument != null &amp;&amp; dsDocument.rowsCount &gt; 0) {
-			parentDocumentId = dsDocument.getValue(0, &quot;documentPK.documentId&quot;);
-			colleagueId = dsDocument.getValue(0, &quot;colleagueId&quot;);
-		}
-    }
-    
-	var serviceUrl = FLUIG_DOMAIN + &quot;/webdesk/ECMCardService?wsdl&quot;
-	var javaNetUrl = new java.net.URL(serviceUrl);
-
-	var connection = javaNetUrl.openConnection();
-    connection.setDoOutput(true);
-    connection.setRequestMethod(&quot;POST&quot;);
-    connection.setRequestProperty(&quot;Content-Type&quot;, &quot;text/xml; charset=utf-8&quot;);
-	connection.setRequestProperty(&quot;SOAPAction&quot;, &quot;createCard&quot;);
-	
-	var arrFields = returnFormFields(objEmpresa)
-
-	var postData = new java.lang.StringBuilder();
-    postData.append(&apos;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ws=&quot;http://ws.dm.ecm.technology.totvs.com/&quot;&gt;&apos;);
-        postData.append(&apos;&lt;soapenv:Header/&gt;&apos;);
-        postData.append(&apos;&lt;soapenv:Body&gt;&apos;);
-            postData.append(&apos;&lt;ws:createCard&gt;&apos;);
-                postData.append(&apos;&lt;companyId&gt;&apos; + fluigCompanyId + &apos;&lt;/companyId&gt;&apos;);
-                postData.append(&apos;&lt;username&gt;&apos; + fluigUsuario + &apos;&lt;/username&gt;&apos;);
-                postData.append(&apos;&lt;password&gt;&apos; + fluigSenha + &apos;&lt;/password&gt;&apos;);
-                postData.append(&apos;&lt;card&gt;&apos;);
-                    postData.append(&apos;&lt;item&gt;&apos;);
-                    for (var i = 0; i &lt; arrFields.length; i++) {
-                        postData.append(&apos;&lt;cardData&gt;&apos;);
-                            postData.append(&apos;&lt;field&gt;&apos; + arrFields[i].fieldName + &apos;&lt;/field&gt;&apos;);
-                            postData.append(&apos;&lt;value name=&quot;&apos; + arrFields[i].fieldName + &apos;&quot;&gt;&apos; + arrFields[i].fieldValue + &apos;&lt;/value&gt;&apos;);
-                        postData.append(&apos;&lt;/cardData&gt;&apos;);
-                    }
-						postData.append(&apos;&lt;parentDocumentId&gt;&apos; + parentDocumentId + &apos;&lt;/parentDocumentId&gt;&apos;);
-						postData.append(&apos;&lt;documentDescription&gt;&apos; + objEmpresa.descricao + &apos;&lt;/documentDescription&gt;&apos;);
-                    postData.append(&apos;&lt;/item&gt;&apos;);
-                postData.append(&apos;&lt;/card&gt;&apos;);
-        postData.append(&apos;&lt;/ws:createCard&gt;&apos;);
-        postData.append(&apos;&lt;/soapenv:Body&gt;&apos;);
-	postData.append(&apos;&lt;/soapenv:Envelope&gt;&apos;);
-	
-	var os = connection.getOutputStream();
-    os.write(postData.toString().getBytes());
-	os.flush();
-	
-	var responseCode = connection.getResponseCode();
-
-	log.info(&quot;@@ Criado empresa &quot; + objEmpresa.empresaId + &quot;:&quot; + responseCode )
-}
-
-function returnFormFields(objEmpresa) {    
-    var arrFields = [];
-    var arrColumns = [&quot;empresaId&quot;, &quot;descricao&quot;];
-    
-    for (var i = 0; i &lt; arrColumns.length; i++) {
-        var fieldObj = {
-            fieldName: arrColumns[i],
-            fieldValue: objEmpresa[arrColumns[i]]
-        };
-        
-        arrFields.push(fieldObj);
-    }
-    
-    return arrFields;
+      <eventDescription>var parentDocumentId = 0;&#xd;
+var colleagueId = &quot;&quot;;&#xd;
+var DATASET_NAME = &quot;fdwt_empresas&quot;&#xd;
+&#xd;
+var FLUIG_DOMAIN = &quot;&lt;DOMINIO_DO_FLUIG&gt;&quot; // Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080&#xd;
+&#xd;
+function servicetask4(attempt, message) {&#xd;
+	log.info(&quot;@@ Inicio do servico sincroniza_empresas&quot;);&#xd;
+	&#xd;
+	try {&#xd;
+		// Credenciais para consumo do serviço de fichas do fluig (ECMCardService)&#xd;
+		// Preencher as variáveis &apos;fluigUsuario&apos; e &apos;fluigSenha&apos; com a identificação e a senha de um usuário com papel admin de seu ambiente fluig alvo&#xd;
+		// Você pode inserir as credenciais de acesso ao RP nesta sessão também&#xd;
+		var fluigCompanyId = getValue(&quot;WKCompany&quot;);&#xd;
+		var fluigUsuario = &quot;&lt;CODIGO_DO_USUARIO&gt;&quot;; // Informe aqui a identificação do usuário&#xd;
+		var fluigSenha = &quot;&lt;SENHA_DO_USUARIO&gt;&quot;; // Informe aqui a senha do usuário&#xd;
+		&#xd;
+		// Acesso ao RP&#xd;
+		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:&#xd;
+		// 1. empresaId: Código do empresa&#xd;
+		// 2. descricao: Nome do empresa&#xd;
+		// Precisamos das seguintes ações:&#xd;
+		// 1. Para cada empresa retornado de seu RP, preencha o objeto &apos;objEmpresa&apos; com as devidas informações&#xd;
+		// 2. Para cada &apos;objEmpresa&apos; criado, adicione o mesmo no array &apos;resultSet&apos;&#xd;
+&#xd;
+		var resultSet = [];&#xd;
+&#xd;
+		// Inicio - Seu trecho de código para incluir as empresas no array resultSet&#xd;
+			var objEmpresa = {&#xd;
+				descricao: &apos;Digte&apos;,&#xd;
+				empresaId: &apos;37842347&apos;&#xd;
+			};&#xd;
+&#xd;
+			resultSet.push(objEmpresa);&#xd;
+		// Fim - Seu trecho de código para incluir as empresas no array resultSet&#xd;
+		&#xd;
+		// A partir daqui não é necessário alterações no código&#xd;
+		for (var i = 0; i &lt; resultSet.length; i++) {&#xd;
+			var objEmpresa = resultSet[i];&#xd;
+			var c1 = DatasetFactory.createConstraint(&quot;empresaId&quot;, objEmpresa.empresaId, objEmpresa.empresaId, ConstraintType.MUST);&#xd;
+			var c2 = DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST);&#xd;
+			var dsEmpresa = DatasetFactory.getDataset(DATASET_NAME, null, [c1, c2], null);&#xd;
+			&#xd;
+			if (dsEmpresa != null &amp;&amp; dsEmpresa.rowsCount &gt; 0) {&#xd;
+				if (needsToUpdate(objEmpresa, dsEmpresa)) {&#xd;
+					updateCard(dsEmpresa, objEmpresa, fluigCompanyId, fluigUsuario, fluigSenha);&#xd;
+				}&#xd;
+				else {&#xd;
+					continue;&#xd;
+				}&#xd;
+			}&#xd;
+			else {&#xd;
+				createCard(objEmpresa, fluigCompanyId, fluigUsuario, fluigSenha);&#xd;
+			}&#xd;
+		}&#xd;
+&#xd;
+		log.info(&quot;@@ Fim do servico sincroniza_empresas&quot;);&#xd;
+&#xd;
+	} catch (e) {&#xd;
+		log.info(&quot;@@ Erro, estourou uma excecao&quot;);&#xd;
+		log.info(&quot;@@ e.message: &quot; + e.toString());&#xd;
+		log.info(&quot;@@ Fim do servico sincroniza_empresas&quot;);&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function needsToUpdate(objEmpresa, dsEmpresa) {&#xd;
+	var update = false;&#xd;
+&#xd;
+	if (dsEmpresa.getValue(0, &quot;empresaId&quot;) != objEmpresa.empresaId || &#xd;
+		dsEmpresa.getValue(0, &quot;descricao&quot;) != objEmpresa.descricao) {&#xd;
+			update = true;&#xd;
+	}&#xd;
+&#xd;
+	return update;&#xd;
+}&#xd;
+&#xd;
+function updateCard(dsEmpresa, objEmpresa, fluigCompanyId, fluigUsuario, fluigSenha) {&#xd;
+	var cardId = dsEmpresa.getValue(0, &quot;metadata#Id&quot;);&#xd;
+&#xd;
+	if (cardId != 0) {&#xd;
+		var serviceUrl = FLUIG_DOMAIN + &quot;/webdesk/ECMCardService?wsdl&quot;&#xd;
+		var javaNetUrl = new java.net.URL(serviceUrl);&#xd;
+&#xd;
+		var connection = javaNetUrl.openConnection();&#xd;
+		connection.setDoOutput(true);&#xd;
+		connection.setRequestMethod(&quot;POST&quot;);&#xd;
+		connection.setRequestProperty(&quot;Content-Type&quot;, &quot;text/xml; charset=utf-8&quot;);&#xd;
+		connection.setRequestProperty(&quot;SOAPAction&quot;, &quot;updateCardData&quot;);&#xd;
+		&#xd;
+		var arrFields = returnFormFields(objEmpresa)&#xd;
+&#xd;
+		var postData = new java.lang.StringBuilder();&#xd;
+		postData.append(&apos;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ws=&quot;http://ws.dm.ecm.technology.totvs.com/&quot;&gt;&apos;);&#xd;
+			postData.append(&apos;&lt;soapenv:Header/&gt;&apos;);&#xd;
+			postData.append(&apos;&lt;soapenv:Body&gt;&apos;);&#xd;
+				postData.append(&apos;&lt;ws:updateCardData&gt;&apos;);&#xd;
+					postData.append(&apos;&lt;companyId&gt;&apos; + fluigCompanyId + &apos;&lt;/companyId&gt;&apos;);&#xd;
+					postData.append(&apos;&lt;username&gt;&apos; + fluigUsuario + &apos;&lt;/username&gt;&apos;);&#xd;
+					postData.append(&apos;&lt;password&gt;&apos; + fluigSenha + &apos;&lt;/password&gt;&apos;);&#xd;
+					postData.append(&apos;&lt;cardId&gt;&apos; + cardId + &apos;&lt;/cardId&gt;&apos;);&#xd;
+					postData.append(&apos;&lt;cardData&gt;&apos;);&#xd;
+					for (var i = 0; i &lt; arrFields.length; i++) {&#xd;
+						postData.append(&apos;&lt;item&gt;&apos;);&#xd;
+							postData.append(&apos;&lt;field&gt;&apos; + arrFields[i].fieldName + &apos;&lt;/field&gt;&apos;);&#xd;
+							postData.append(&apos;&lt;value name=&quot;&apos; + arrFields[i].fieldName + &apos;&quot;&gt;&apos; + arrFields[i].fieldValue + &apos;&lt;/value&gt;&apos;);&#xd;
+						postData.append(&apos;&lt;/item&gt;&apos;);&#xd;
+					}&#xd;
+					postData.append(&apos;&lt;/cardData&gt;&apos;);&#xd;
+				postData.append(&apos;&lt;/ws:updateCardData&gt;&apos;);&#xd;
+			postData.append(&apos;&lt;/soapenv:Body&gt;&apos;);&#xd;
+		postData.append(&apos;&lt;/soapenv:Envelope&gt;&apos;);&#xd;
+&#xd;
+		var os = connection.getOutputStream();&#xd;
+		os.write(postData.toString().getBytes());&#xd;
+		os.flush();&#xd;
+		&#xd;
+		var responseCode = connection.getResponseCode();&#xd;
+&#xd;
+		log.info(&quot;@@ Atualizado empresa &quot; + objEmpresa.empresaId + &quot;:&quot; + responseCode )&#xd;
+	}&#xd;
+	else {&#xd;
+		return false;&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function createCard (objEmpresa, fluigCompanyId, fluigUsuario, fluigSenha) {&#xd;
+    if (parentDocumentId == 0) {&#xd;
+		var c1 = DatasetFactory.createConstraint(&quot;datasetName&quot;, DATASET_NAME, DATASET_NAME, ConstraintType.MUST);&#xd;
+		var c2 = DatasetFactory.createConstraint(&quot;activeVersion&quot;, true, true, ConstraintType.MUST);&#xd;
+		var dsDocument = DatasetFactory.getDataset(&quot;document&quot;, null, [c1, c2], null);&#xd;
+&#xd;
+		if (dsDocument != null &amp;&amp; dsDocument.rowsCount &gt; 0) {&#xd;
+			parentDocumentId = dsDocument.getValue(0, &quot;documentPK.documentId&quot;);&#xd;
+			colleagueId = dsDocument.getValue(0, &quot;colleagueId&quot;);&#xd;
+		}&#xd;
+    }&#xd;
+    &#xd;
+	var serviceUrl = FLUIG_DOMAIN + &quot;/webdesk/ECMCardService?wsdl&quot;&#xd;
+	var javaNetUrl = new java.net.URL(serviceUrl);&#xd;
+&#xd;
+	var connection = javaNetUrl.openConnection();&#xd;
+    connection.setDoOutput(true);&#xd;
+    connection.setRequestMethod(&quot;POST&quot;);&#xd;
+    connection.setRequestProperty(&quot;Content-Type&quot;, &quot;text/xml; charset=utf-8&quot;);&#xd;
+	connection.setRequestProperty(&quot;SOAPAction&quot;, &quot;createCard&quot;);&#xd;
+	&#xd;
+	var arrFields = returnFormFields(objEmpresa)&#xd;
+&#xd;
+	var postData = new java.lang.StringBuilder();&#xd;
+    postData.append(&apos;&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ws=&quot;http://ws.dm.ecm.technology.totvs.com/&quot;&gt;&apos;);&#xd;
+        postData.append(&apos;&lt;soapenv:Header/&gt;&apos;);&#xd;
+        postData.append(&apos;&lt;soapenv:Body&gt;&apos;);&#xd;
+            postData.append(&apos;&lt;ws:createCard&gt;&apos;);&#xd;
+                postData.append(&apos;&lt;companyId&gt;&apos; + fluigCompanyId + &apos;&lt;/companyId&gt;&apos;);&#xd;
+                postData.append(&apos;&lt;username&gt;&apos; + fluigUsuario + &apos;&lt;/username&gt;&apos;);&#xd;
+                postData.append(&apos;&lt;password&gt;&apos; + fluigSenha + &apos;&lt;/password&gt;&apos;);&#xd;
+                postData.append(&apos;&lt;card&gt;&apos;);&#xd;
+                    postData.append(&apos;&lt;item&gt;&apos;);&#xd;
+                    for (var i = 0; i &lt; arrFields.length; i++) {&#xd;
+                        postData.append(&apos;&lt;cardData&gt;&apos;);&#xd;
+                            postData.append(&apos;&lt;field&gt;&apos; + arrFields[i].fieldName + &apos;&lt;/field&gt;&apos;);&#xd;
+                            postData.append(&apos;&lt;value name=&quot;&apos; + arrFields[i].fieldName + &apos;&quot;&gt;&apos; + arrFields[i].fieldValue + &apos;&lt;/value&gt;&apos;);&#xd;
+                        postData.append(&apos;&lt;/cardData&gt;&apos;);&#xd;
+                    }&#xd;
+						postData.append(&apos;&lt;parentDocumentId&gt;&apos; + parentDocumentId + &apos;&lt;/parentDocumentId&gt;&apos;);&#xd;
+						postData.append(&apos;&lt;documentDescription&gt;&apos; + objEmpresa.descricao + &apos;&lt;/documentDescription&gt;&apos;);&#xd;
+                    postData.append(&apos;&lt;/item&gt;&apos;);&#xd;
+                postData.append(&apos;&lt;/card&gt;&apos;);&#xd;
+        postData.append(&apos;&lt;/ws:createCard&gt;&apos;);&#xd;
+        postData.append(&apos;&lt;/soapenv:Body&gt;&apos;);&#xd;
+	postData.append(&apos;&lt;/soapenv:Envelope&gt;&apos;);&#xd;
+	&#xd;
+	var os = connection.getOutputStream();&#xd;
+    os.write(postData.toString().getBytes());&#xd;
+	os.flush();&#xd;
+	&#xd;
+	var responseCode = connection.getResponseCode();&#xd;
+&#xd;
+	log.info(&quot;@@ Criado empresa &quot; + objEmpresa.empresaId + &quot;:&quot; + responseCode )&#xd;
+}&#xd;
+&#xd;
+function returnFormFields(objEmpresa) {    &#xd;
+    var arrFields = [];&#xd;
+    var arrColumns = [&quot;empresaId&quot;, &quot;descricao&quot;];&#xd;
+    &#xd;
+    for (var i = 0; i &lt; arrColumns.length; i++) {&#xd;
+        var fieldObj = {&#xd;
+            fieldName: arrColumns[i],&#xd;
+            fieldValue: objEmpresa[arrColumns[i]]&#xd;
+        };&#xd;
+        &#xd;
+        arrFields.push(fieldObj);&#xd;
+    }&#xd;
+    &#xd;
+    return arrFields;&#xd;
 }</eventDescription>
     </WorkflowProcessEvent>
   </list>
@@ -552,7 +633,7 @@ function returnFormFields(objEmpresa) {
   <list>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>281</height>
+      <height>431</height>
       <width>31</width>
       <positionX>100</positionX>
       <positionY>120</positionY>
@@ -568,7 +649,7 @@ function returnFormFields(objEmpresa) {
     </SwimLane>
     <SwimLane>
       <color>FFFFFF</color>
-      <height>281</height>
+      <height>431</height>
       <width>601</width>
       <positionX>140</positionX>
       <positionY>120</positionY>
@@ -591,11 +672,33 @@ function returnFormFields(objEmpresa) {
         <companyId>1</companyId>
         <processId>sincroniza_empresas</processId>
         <version>4</version>
-        <linkSequence>10</linkSequence>
+        <linkSequence>11</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
       <positionX>394</positionX>
-      <positionY>357</positionY>
+      <positionY>389</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>4</version>
+        <linkSequence>14</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>482</positionX>
+      <positionY>489</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>sincroniza_empresas</processId>
+        <version>4</version>
+        <linkSequence>14</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>343</positionX>
+      <positionY>489</positionY>
     </ProcessLinkBend>
   </list>
   <list>

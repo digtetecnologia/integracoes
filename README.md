@@ -1,4 +1,7 @@
 # Integrações
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/820ae2a57cfe89002f51/maintainability)](https://codeclimate.com/github/digtetecnologia/integracoes/maintainability)
+
 Este repositório é dedicado aos processos de integração entre os RPs e os formulários de carga de dados do Intranet bu Digte
 
 ## Processos disponíveis

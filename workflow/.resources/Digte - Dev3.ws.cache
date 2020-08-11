@@ -65,6 +65,19 @@
        <int>101</int>
       </void>
       <void property="processDescription">
+       <string>sincroniza_dados_adicionais</string>
+      </void>
+      <void property="processId">
+       <string>sincroniza_dados_adicionais</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
+      <void property="companyId">
+       <int>101</int>
+      </void>
+      <void property="processDescription">
        <string>sincroniza_empresas</string>
       </void>
       <void property="processId">

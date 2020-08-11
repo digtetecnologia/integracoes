@@ -17,8 +17,9 @@ function servicetask4(attempt, message) {
 		
 		// Acesso ao RP
 		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:
-		// 1. cargoId: Código do cargo
-		// 2. cargoNome: Nome do cargo
+		// 1. *cargoId: Código do cargo
+		// 2. *cargoNome: Nome do cargo
+		// *campo de preenchimento obrigatório
 		// Precisamos das seguintes ações:
 		// 1. Para cada cargo retornado de seu RP, preencha o objeto 'objCargo' com as devidas informações
 		// 2. Para cada 'objCargo' criado, adicione o mesmo no array 'resultSet'

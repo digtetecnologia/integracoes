@@ -26,14 +26,15 @@ function servicetask4(attempt, message) {
         // 7. lojaEmail: e-mail de contato da unidade
         // 8. lojaEndereco: nome da rua, avenida, alameda, entre outros tipos de logradouros (ex. de preenchimento: 'Rua dos Bobos')
         // 9. lojaEstado: estado em que se localiza a unidade (ex. de preenchimento: 'SP')
-        // 10. lojaCodigo: código da unidade cadastrado no seu RP ou base de dados
-        // 11. lojaNome: nome unidade
+        // 10. *lojaCodigo: código da unidade cadastrado no seu RP ou base de dados
+        // 11. *lojaNome: nome unidade
         // 12. lojaNumero: numero do logradouro da unidade
         // 13. lojaPais: país onde a unidade se localiza
         // 14. lojaRazaoSocial: razão social da unidade da unidade
         // 15. lojaTelefone: telefone de contato da unidade
         // 16. nomeLojaCidade: (ex. de preenchimento: 'São Paulo - SP')
-        // 17. validarEndereco: (ex. de preenchimento: 'sim' - calculará latitude e longitude com base nos dados de endereço informados / 'nao' - calculará latitude e longitude com base nos dados de endereço informados)
+		// 17. validarEndereco: (ex. de preenchimento: 'sim' - calculará latitude e longitude com base nos dados de endereço informados / 'nao' - calculará latitude e longitude com base nos dados de endereço informados)
+		// *campo de preenchimento obrigatório
 		// Precisamos das seguintes ações:
 		// 1. Para cada unidade retornada de seu RP, preencha o objeto 'objUnidade' com as devidas informações
 		// 2. Para cada 'objUnidade' criado, adicione o mesmo no array 'resultSet'

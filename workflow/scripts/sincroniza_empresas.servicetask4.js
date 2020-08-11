@@ -17,8 +17,9 @@ function servicetask4(attempt, message) {
 		
 		// Acesso ao RP
 		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:
-		// 1. empresaId: Código do empresa
-		// 2. descricao: Nome do empresa
+		// 1. *empresaId: Código do empresa
+		// 2. *descricao: Nome do empresa
+		// *campo de preenchimento obrigatório
 		// Precisamos das seguintes ações:
 		// 1. Para cada empresa retornado de seu RP, preencha o objeto 'objEmpresa' com as devidas informações
 		// 2. Para cada 'objEmpresa' criado, adicione o mesmo no array 'resultSet'

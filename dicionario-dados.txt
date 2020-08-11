@@ -1,0 +1,142 @@
+EMPRESAS
+    metadata#parent_id  = id do formulário de Empresa no fluig
+    metadata#id         = id da ficha gerada no fluig após a importação
+    documentDescription = descrição do registro, deve ser igual ao campo descricao
+    metadata#version    = versão da ficha, deve ser preenchido sempre com o valor 1000
+    descricao (*)       = nome da empresa, obrigatório
+    empresaId (*)       = id da empresa, obrigatório
+        - Não é possível cadastrar 2 empresas com o mesmo Id
+
+UNIDADES
+    metadata#parent_id          = id do formulário de Unidade no fluig
+    metadata#id                 = id da ficha gerada no fluig após a importação
+    documentDescription         = descrição do registro, deve ser igual ao campo lojaNome
+    metadata#version            = versão da ficha, deve ser preenchido sempre com o valor 1000
+    grupoDeRegistros            = usado quando desejamos agrupar unidades (ex.: unidades-zona-norte, unidades-zona-sul)
+    irff                        = imposto de renda retido na fonte
+    lojaAreaAtuacao             = área de atuação da unidade
+    lojaBairro                  = bairro da unidade, utilizado no mapa do widget Consulta de Unidades
+    lojaCEP                     = cep da unidade, utilizado no mapa do widget Consulta de Unidades
+    lojaCelular                 = celular do responsável pela unidade
+    lojaCidade                  = cidade da unidade, utilizado no mapa do widget Consulta de Unidades
+    lojaCnes                    = cadastro nacional de estabelecimento de saúde
+    lojaCnpjCpf                 = cpf do responsável pela unidade, ou cnpj da unidade
+    lojaCodigo (*)              = id da unidade, obrigatório
+        - Não é possível cadastrar 2 empresas com o mesmo Id
+    lojaComplemento             = complemento de endereço da unidade (apto, bloco, conjunto, entre outras especificações), utilizado no mapa do widget Consulta de Unidades
+    lojaComunidade              = nome da comunidade da unidade
+    lojaComunidadeURL           = url da comunidade da unidade
+    lojaEmail                   = email de contato da unidade
+    lojaEmpresa                 = valor "fisica" ou "juridica"
+    lojaEndereco                = endereço da unidade, utilizado no mapa do widget Consulta de Unidades. Seguir as recomendações abaixo:
+        - Não colocar o número neste campo
+        - Rua/Avenida/Alameda/entre outros - deve estar escrito por extenso
+        - Primeira letra de cada palavra em maiúsculo
+    lojaEstado                  = estado da unidade, utilizado no mapa do widget Consulta de Unidades
+        - Sigla com 2 caracteres (ex.: SP, MG, ...)
+    lojaGrupoFornecedor         = grupo fornecedor da unidade 
+    lojaInscricaoEstadual       = código de inscrição estadual da unidade
+    lojaInscricaoInss           = código de inscrição junto ao INSS
+    lojaInscricaoMunicipal      = código de inscrição municipal
+    lojaLat                     = latitude da localização da unidade
+        - Campo utilizado nas widgets de mapa
+        - Calculado automaticamente baseado no cadastro correto dos campos "lojaBairro", "lojaCEP", "lojaCidade", "lojaEndereco", "lojaNumero", "lojaPais"
+    lojaLink                    = site, blog, rede social associados à unidade em questão
+    lojaLon                     = longitude da localização da unidade
+        - Campo utilizado nas widgets de mapa
+        - Calculado automaticamente baseado no cadastro correto dos campos "lojaBairro", "lojaCEP", "lojaCidade", "lojaEndereco", "lojaNumero", "lojaPais"
+    lojaNome (*)                = nome da unidade, obrigatório
+    lojaNumero                  = número da rua, avenida, alameda, entre outros da unidade
+    lojaPais                    = país da unidade
+    lojaRazaoSocial             = razão social da empresa que a unidade representa ou atende 
+    lojaResponsavel             = nome do colaborador responsável pela unidade
+    lojaResponsavelPerfil       = matrícula do usuário do colaborador responsável pela unidade
+    lojaTelefone                = telefone de contato da unidade
+    lojaTipo                    = tipo da unidade
+        - Os tipos são definidos no formulário "Tipos"
+    nomeLojaCidade              = campo constituído de "NOME DA CIDADE - SIGLA DO ESTADO"
+    validarEndereco             = se for igual a sim, tornará o campo lojaCidade obrigatório e fará validação sobre o campo lojaEstado que deverá seguir o padrão de sigla do estado
+
+DEPARTAMENTOS
+    metadata#parent_id             = id do formulário de Departamento no fluig
+    metadata#id                    = id da ficha gerada no fluig após a importação
+    documentDescription            = descrição do registro, deve ser igual ao campo estruturaNome
+    metadata#version               = versão da ficha, deve ser preenchido sempre com o valor 1000
+    estruturaCargo                 = cargo do responsável pelo departamento. Campo traz os cargos cadastrados no formulário "Cargos"
+    estruturaDepartamento          = nome do usuário responsável pelo departamento
+        - Só são exibidos usuários que possuem ficha de dados adicionais
+    estruturaDepartamentoMatricula = matrícula do usuário responsável pelo departamento
+    estruturaDivisao               = código do departamento ao qual este departamento é subordinado
+    estruturaId (*)                = código do departamento, obrigatório
+        - Não é possível cadastrar 2 departamentos com o mesmo Id
+    estruturaLogin                 = login do usuário responsável pelo departamento
+    estruturaNome (*)              = nome do departamento, obrigatório
+    folderImgId                    = campo específico de cadastro da imagem do departamento. Utilizar interface gráfica (ECM) para cadastro deste campo
+    img2DocumentUrl                = campo específico de cadastro da imagem do departamento. Utilizar interface gráfica (ECM) para cadastro deste campo
+    imgBtnUpload                   = campo específico de cadastro da imagem do departamento. Utilizar interface gráfica (ECM) para cadastro deste campo
+    imgDocumentId                  = campo específico de cadastro da imagem do departamento. Utilizar interface gráfica (ECM) para cadastro deste campo
+    imgDocumentIdExcluir           = campo específico de cadastro da imagem do departamento. Utilizar interface gráfica (ECM) para cadastro deste campo
+    imgDocumentUrl                 = campo específico de cadastro da imagem do departamento. Utilizar interface gráfica (ECM) para cadastro deste campo
+    imgDocumentVersion             = campo específico de cadastro da imagem do departamento. Utilizar interface gráfica (ECM) para cadastro deste campo
+    imgFileName                    = campo específico de cadastro da imagem do departamento. Utilizar interface gráfica (ECM) para cadastro deste campo
+    nomeCadastro                   = campo não utilizado
+
+CARGOS
+    metadata#parent_id  = id do formulário de Cargo no fluig
+    metadata#id         = id da ficha gerada no fluig após a importação
+    documentDescription = descrição do registro, deve ser igual ao campo cargoNome
+    metadata#version    = versão da ficha, deve ser preenchido sempre com o valor 1000
+    cargoId (*)         = código do cargo, obrigatório
+        - Não é possível cadastrar 2 cargos com o mesmo Id
+    cargoNome (*)       = nome do cargo, obrigatório
+
+DADOS ADICIONAIS DO USUÁRIO
+    metadata#parent_id               = id do formulário de Dados Adicionais do Usuário no fluig
+    metadata#id                      = id da ficha gerada no fluig após a importação
+    documentDescription              = descrição do registro, deve ser igual ao campo nomeCompleto
+    metadata#version                 = versão da ficha, deve ser preenchido sempre com o valor 1000
+    aniversarioDia                   = dia do aniversário do colaborador. Seguir padrão de 2 digitos, ou seja, dia 1 deve estar como 01
+    aniversarioMes                   = mês do aniversário do colaborador. Seguir padrão de 2 digitos, ou seja, mês 1 deve estar como 01
+    campoCustomizado1                = campo genérico. Não precisa ser preenchido durante a carga de dados
+    campoCustomizado2                = campo genérico. Não precisa ser preenchido durante a carga de dados
+    campoCustomizado3                = campo genérico. Não precisa ser preenchido durante a carga de dados
+    campoCustomizado4                = campo genérico. Não precisa ser preenchido durante a carga de dados
+    campoCustomizado5                = campo genérico. Não precisa ser preenchido durante a carga de dados
+    cargo                            = código do cargo do colaborador. Este campo deve estar compatível ao cadastrado no campo "cargoId" do formulário "Cargos"
+    celular                          = celular de contato do colaborador. De preferência não cadastrar o celular pessoal do colaborador
+        - Recomendamos o cadastro seguindo o padrão "DDD + número". Ex.: (11) 99999-9999
+    corHumor                         = campo calculado automaticamente quando o usuário associado a esse registro escolhe um humor na widget "Humor"
+    dataInicioEmpresa                = data de início do colaborador na empresa. Seguir modelo (DD/MM/YYYY)
+    dataInicioEmpresaTs              = utilizar a fórmula "=((DATA(EXT.TEXTO(célula_dataInicioEmpresa;7;4);EXT.TEXTO(célula_dataInicioEmpresa;4;2);EXT.TEXTO(célula_dataInicioEmpresa;1;2))-DATA(1970;1;1))*86400)" e alterar célula_dataInicioEmpresa
+    dataNascimento                   = data de nascimento do colaborador na empresa. Seguir modelo (DD/MM/YYYY)
+    dataNascimentoTs                 = utilizar a fórmula "=((DATA(EXT.TEXTO(célula_dataNascimento;7;4);EXT.TEXTO(célula_dataNascimento;4;2);EXT.TEXTO(célula_dataNascimento;1;2))-DATA(1970;1;1))*86400)" e alterar célula_dataNascimento
+    departamento                     = código do departamento do colaborador. Este campo deve estar compatível ao cadastrado no campo "estruturaId" do formulário "Departamentos"
+    email                            = email do colaborador. Dê preferência para ser inserido o e-mail do usuário do colaborador no fluig. Caso não haja, deixe essa célula em branco
+    empresa                          = código da empresa do colaborador. Este campo deve estar compatível ao cadastrado no campo "empresaId" do formulário "Empresas"
+    fraseHumor                       = campo calculado automaticamente quando o usuário associado a esse registro escolhe um humor na widget "Humor"
+    genero                           = seguir o padrão "masculino" ou "feminino"
+    idCorporativo                    = caso haja algum número de registro interno do colaborador, inserir neste campo
+    idPessoal                        = caso seja necessário armazenar CPF ou RG do colaborador utilizar este campo
+    login                            = login do usuário do colaborador no fluig. Caso não haja usuário no fluig, inserir o caractere "."
+    matricula                        = matrícula do usuário do colaborador no fluig. Caso não haja usuário no fluig, inserir o caractere "."
+    nome                             = primeiro nome do colaborador
+    nomeCargo                        = cargo do colaborador. Este campo deve estar compatível ao cadastrado no campo "cargoNome" do formulário "Cargos"
+    nomeCompleto                     = nome completo do colaborador = nome + sobrenomes
+    nomeDepartamento                 = departamento do colaborador. Este campo deve estar compatível ao cadastrado no campo "estruturaNome" do formulário "Departamentos"
+    nomeEmpresa                      = empresa do colaborador. Este campo deve estar compatível ao cadastrado no campo "descricao" do formulário "Empresas"
+    nomeHumor                        = campo calculado automaticamente quando o usuário associado a esse registro escolhe um humor na widget "Humor"
+    nomeUnidade                      = unidade do colaborador. Este campo deve estar compatível ao cadastrado no campo "lojaNome" do formulário "Unidades"
+    politicaDocumento                = campo calculado automaticamente quando o usuário aceitar a política de uso
+    politicaVersao                   = campo calculado automaticamente quando o usuário aceitar a política de uso
+    ramal                            = ramal interno do colaborador
+    resumo                           = campo exibido na widget de minicurrículo
+    sobrenome                        = sobrenomes do colaborador
+    tEmpresa                         = campo destinado a treinamentos, não relevante neste momento
+    tMinistra                        = campo destinado a treinamentos, não relevante neste momento
+    telefone                         = celular de contato do colaborador. De preferência não cadastrar o celular pessoal do colaborador
+        - Recomendamos o cadastro seguindo o padrão "DDD + número". Ex.: (11) 9999-9999
+    tutorialConclusao                = campo calculado automaticamente quando o usuário associado a esse registro conclui um tutorial de acesso
+    unidade                          = código da unidade do colaborador. Este campo deve estar compatível ao cadastrado no campo "lojaCodigo" do formulário "Unidades"
+    tablename                        = campo destinado a treinamentos, não relevante neste momento
+    tnTreinamentos___tId             = campo destinado a treinamentos, não relevante neste momento
+    tnTreinamentos___wdk_sequence_id = campo destinado a treinamentos, não relevante neste momento

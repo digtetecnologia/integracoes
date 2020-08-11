@@ -5,7 +5,7 @@ var DATASET_NAME = "fdwt_estrutura_empresa"
 var FLUIG_DOMAIN = "<DOMINIO_DO_FLUIG>" // Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080
 
 function servicetask4(attempt, message) {
-	log.info("@@ Inicio do servico sincroniza_cargos");
+	log.info("@@ Inicio do servico sincroniza_departamentos");
 	
 	try {
 		// Credenciais para consumo do serviço de fichas do fluig (ECMCardService)
@@ -65,12 +65,12 @@ function servicetask4(attempt, message) {
 			}
 		}
 
-		log.info("@@ Fim do servico sincroniza_cargos");
+		log.info("@@ Fim do servico sincroniza_departamentos");
 
 	} catch (e) {
 		log.info("@@ Erro, estourou uma excecao");
 		log.info("@@ e.message: " + e.toString());
-		log.info("@@ Fim do servico sincroniza_cargos");
+		log.info("@@ Fim do servico sincroniza_departamentos");
 	}
 }
 

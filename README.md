@@ -9,6 +9,7 @@ Este repositório é dedicado aos processos de integração entre os RPs e os fo
 2. Sincronização de Empresas: sincroniza_empresas
 3. Sincronização de Unidades: sincroniza_unidades
 4. Sincronização de Departamentos: sincroniza_departamentos
+5. Sincronização de Dados Adicionais do Usuário: sincroniza_dados_adicionais
 
 ## Configuração
 1. Faça um fork deste repositório

@@ -84,7 +84,7 @@ function updateCard(dsEmpresa, objEmpresa) {
 	var cardId = dsEmpresa.getValue(0, "metadata#Id");
 
 	if (cardId != 0) {
-		var serviceUrl = FLUIG_DOMAIN + "/webdesk/ECMCardService?wsdl"
+		var serviceUrl = FLUIG_DOMAIN + "/webdesk/ECMCardService?wsdl";
 		var javaNetUrl = new java.net.URL(serviceUrl);
 
 		var connection = javaNetUrl.openConnection();

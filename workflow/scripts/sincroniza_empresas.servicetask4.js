@@ -93,7 +93,7 @@ function updateCard(dsEmpresa, objEmpresa) {
 		connection.setRequestProperty("Content-Type", "text/xml; charset=utf-8");
 		connection.setRequestProperty("SOAPAction", "updateCardData");
 		
-		var arrFields = returnFormFields(objEmpresa)
+		var arrFields = returnFormFields(objEmpresa);
 
 		var postData = new java.lang.StringBuilder();
 		postData = getUpdateXML(postData, cardId, arrFields);

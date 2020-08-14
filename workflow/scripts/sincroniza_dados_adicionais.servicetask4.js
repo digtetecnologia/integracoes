@@ -17,85 +17,44 @@ function servicetask4(attempt, message) {
 		
 		// Acesso ao RP
 		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:
-        // 1. aniversarioDia: dia da data de nascimento do colaborador (ex. de preenchimento: '05')
-        // 2. aniversarioMes: mes da data de nascimento do colaborador (ex. de preenchimento: '09')
-        // 3. celular: celular do colaborador
-        // 4. dataInicioEmpresa: data de ingresso do colaborador na empresa (ex. de preenchimento: '05/08/1995')
-        // 5. cargo: código do cargo do colaborador
-        // 6. dataNascimento: data de nascimento do colaborador (ex. de preenchimento: '05/08/1995')
-        // 7. departamento: código do departamento do colaborador
-        // 8. email: e-mail do colaborador. Caso o colaborador possua um usuário do fluig, preencha com o e-mail de cadastro do fluig, se não possuir preencha com '.'
-        // 9. empresa: código da empresa do colaborador
-        // 10. genero: gênero do colaborador (ex. de preenchimento: 'masculino' ou 'feminino')
-        // 11. idPessoal: CPF ou RG do colaborador
-        // 12. login: caso o colaborador possua um usuário do fluig, preencha com o login do fluig, se não possuir preencha com '.'
-        // 13. matricula: caso o colaborador possua um usuário do fluig, preencha com a matrícula do fluig, se não possuir preencha com '.'
-        // 14. nome: primeiro nome do colaborador
-        // 15. nomeCargo: nome do cargo do colaborador
-        // 16. *nomeCompleto: nome completo do colaborador
-        // 17. nomeDepartamento: nome do departamento do colaborador
-        // 18. nomeEmpresa: nome da empresa do colaborador
-        // 19. nomeUnidade: nome da unidade do colaborador
-        // 20. sobrenome: sobrenome do colaborador
-        // 21. telefone: telefone do colaborador
-        // 22. unidade: código da unidade do colaborador
-		// *campo de preenchimento obrigatório
 		// Precisamos das seguintes ações:
 		// 1. Para cada cargo retornado de seu RP, preencha o objeto 'objDadoAdicional' com as devidas informações
 		// 2. Para cada 'objDadoAdicional' criado, adicione o mesmo no array 'resultSet'
+		// *campo de preenchimento obrigatório
 
 		var resultSet = [];
 
 		// Inicio - Seu trecho de código para incluir os dados adicionais no array resultSet
 			var objDadoAdicional = {
-				aniversarioDia: "05",
-                aniversarioMes: "12",
-                celular: "(11) 96580-6589",
-                dataInicioEmpresa: "12/05/1995",
-                cargo: "465465",
-                dataNascimento: "12/04/1980",
-                departamento: "654654",
-                email: "contato@mail.com.br",
-                empresa: "7817236",
-                genero: "masculino",
-                idPessoal: "456.987.456-32",
-                login: "joao.deus",
-                matricula: "joao.deus.1",
-                nome: "João",
-                nomeCargo: "Desenvolvedor",
-                nomeCompleto: "João de Deus da Silva",
-                nomeDepartamento: "TI",
-                nomeEmpresa: "Digte",
-                nomeUnidade: "Unidade Zona Norte",
-                sobrenome: "de Deus da Silva",
-                telefone: "(11) 6580-6589",
-                unidade: "312873"
+				aniversarioDia: "05", // 1. aniversarioDia: dia da data de nascimento do colaborador (ex. de preenchimento: '05')
+                aniversarioMes: "12", // 2. aniversarioMes: mes da data de nascimento do colaborador (ex. de preenchimento: '09')
+                celular: "(11) 96580-6589", // 3. celular: celular do colaborador
+                dataInicioEmpresa: "12/05/1995", // 4. dataInicioEmpresa: data de ingresso do colaborador na empresa (ex. de preenchimento: '05/08/1995')
+                cargo: "465465", // 5. cargo: código do cargo do colaborador
+                dataNascimento: "12/04/1980", // 6. dataNascimento: data de nascimento do colaborador (ex. de preenchimento: '05/08/1995')
+                departamento: "654654", // 7. departamento: código do departamento do colaborador
+                email: "contato@mail.com.br", // 8. email: e-mail do colaborador. Caso o colaborador possua um usuário do fluig, preencha com o e-mail de cadastro do fluig, se não possuir preencha com '.'
+                empresa: "7817236", // 9. empresa: código da empresa do colaborador
+                genero: "masculino", // 10. genero: gênero do colaborador (ex. de preenchimento: 'masculino' ou 'feminino')
+                idPessoal: "456.987.456-32", // 11. idPessoal: CPF ou RG do colaborador
+                login: "joao.deus", // 12. login: caso o colaborador possua um usuário do fluig, preencha com o login do fluig, se não possuir preencha com '.'
+                matricula: "joao.deus.1", // 13. matricula: caso o colaborador possua um usuário do fluig, preencha com a matrícula do fluig, se não possuir preencha com '.'
+                nome: "João", // 14. nome: primeiro nome do colaborador
+                nomeCargo: "Desenvolvedor", // 15. nomeCargo: nome do cargo do colaborador
+                nomeCompleto: "João de Deus da Silva", // 16. *nomeCompleto: nome completo do colaborador
+                nomeDepartamento: "TI", // 17. nomeDepartamento: nome do departamento do colaborador
+                nomeEmpresa: "Digte", // 18. nomeEmpresa: nome da empresa do colaborador
+                nomeUnidade: "Unidade Zona Norte", // 19. nomeUnidade: nome da unidade do colaborador
+                sobrenome: "de Deus da Silva", // 20. sobrenome: sobrenome do colaborador
+                telefone: "(11) 6580-6589", // 21. telefone: telefone do colaborador
+                unidade: "312873" // 22. unidade: código da unidade do colaborador
 			};
 
 			resultSet.push(objDadoAdicional);
 		// Fim - Seu trecho de código para incluir os dados adicionais no array resultSet
 
-		// A partir daqui não é necessário alterações no código
-		for (var i = 0; i < resultSet.length; i++) {
-			var objDadoAdicional = resultSet[i];
-			var c1 = DatasetFactory.createConstraint("matricula", objDadoAdicional.matricula, objDadoAdicional.matricula, ConstraintType.SHOULD);
-			var c2 = DatasetFactory.createConstraint("login", objDadoAdicional.login, objDadoAdicional.login, ConstraintType.SHOULD);
-			var c3 = DatasetFactory.createConstraint("email", objDadoAdicional.email, objDadoAdicional.email, ConstraintType.SHOULD);
-			var c4 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
-			var dsDadosAdicionais = DatasetFactory.getDataset(DATASET_NAME, null, [c1, c2, c3, c4], null);
-			
-			if (dsDadosAdicionais != null && dsDadosAdicionais.rowsCount > 0) {
-				if (needsToUpdate(objDadoAdicional, dsDadosAdicionais)) {
-					updateCard(dsDadosAdicionais, objDadoAdicional, fluigCompanyId, fluigUsuario, fluigSenha);
-				}
-				else {
-					continue;
-				}
-			}
-			else {
-				createCard(objDadoAdicional, fluigCompanyId, fluigUsuario, fluigSenha);
-			}
-		}
+        // A partir daqui não é necessário alterações no código
+        synchronizeCards(resultSet, fluigCompanyId, fluigUsuario, fluigSenha);
 
 		log.info("@@ Fim do servico sincroniza_dados_adicionais");
 
@@ -106,33 +65,38 @@ function servicetask4(attempt, message) {
 	}
 }
 
+function synchronizeCards(resultSet, fluigCompanyId, fluigUsuario, fluigSenha) {
+    for (var i = 0; i < resultSet.length; i++) {
+        var objDadoAdicional = resultSet[i];
+        var c1 = DatasetFactory.createConstraint("matricula", objDadoAdicional.matricula, objDadoAdicional.matricula, ConstraintType.SHOULD);
+        var c2 = DatasetFactory.createConstraint("login", objDadoAdicional.login, objDadoAdicional.login, ConstraintType.SHOULD);
+        var c3 = DatasetFactory.createConstraint("email", objDadoAdicional.email, objDadoAdicional.email, ConstraintType.SHOULD);
+        var c4 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
+        var dsDadosAdicionais = DatasetFactory.getDataset(DATASET_NAME, null, [c1, c2, c3, c4], null);
+        
+        if (dsDadosAdicionais != null && dsDadosAdicionais.rowsCount > 0) {
+            if (needsToUpdate(objDadoAdicional, dsDadosAdicionais)) {
+                updateCard(dsDadosAdicionais, objDadoAdicional, fluigCompanyId, fluigUsuario, fluigSenha);
+            }
+            else {
+                continue;
+            }
+        }
+        else {
+            createCard(objDadoAdicional, fluigCompanyId, fluigUsuario, fluigSenha);
+        }
+    }
+}
+
 function needsToUpdate(objDadoAdicional, dsDadosAdicionais) {
     var update = false;
+    var arrFields = ["aniversarioDia", "aniversarioMes", "celular", "dataInicioEmpresa", "cargo", "dataNascimento", "departamento", "email", "empresa", "genero", "idPessoal", "login", "matricula", "nome", "nomeCargo", "nomeCompleto", "nomeDepartamento", "nomeEmpresa", "nomeUnidade", "sobrenome", "telefone", "unidade"];
     
-    if (dsDadosAdicionais.getValue(0, "aniversarioDia") != objDadoAdicional.aniversarioDia ||
-        dsDadosAdicionais.getValue(0, "aniversarioMes") != objDadoAdicional.aniversarioMes ||
-        dsDadosAdicionais.getValue(0, "celular") != objDadoAdicional.celular ||
-        dsDadosAdicionais.getValue(0, "dataInicioEmpresa") != objDadoAdicional.dataInicioEmpresa ||
-        dsDadosAdicionais.getValue(0, "cargo") != objDadoAdicional.cargo ||
-        dsDadosAdicionais.getValue(0, "dataNascimento") != objDadoAdicional.dataNascimento ||
-        dsDadosAdicionais.getValue(0, "departamento") != objDadoAdicional.departamento ||
-        dsDadosAdicionais.getValue(0, "email") != objDadoAdicional.email ||
-        dsDadosAdicionais.getValue(0, "empresa") != objDadoAdicional.empresa ||
-        dsDadosAdicionais.getValue(0, "genero") != objDadoAdicional.genero ||
-        dsDadosAdicionais.getValue(0, "idPessoal") != objDadoAdicional.idPessoal ||
-        dsDadosAdicionais.getValue(0, "login") != objDadoAdicional.login ||
-        dsDadosAdicionais.getValue(0, "matricula") != objDadoAdicional.matricula ||
-        dsDadosAdicionais.getValue(0, "nome") != objDadoAdicional.nome ||
-        dsDadosAdicionais.getValue(0, "nomeCargo") != objDadoAdicional.nomeCargo ||
-        dsDadosAdicionais.getValue(0, "nomeCompleto") != objDadoAdicional.nomeCompleto ||
-        dsDadosAdicionais.getValue(0, "nomeDepartamento") != objDadoAdicional.nomeDepartamento ||
-        dsDadosAdicionais.getValue(0, "nomeEmpresa") != objDadoAdicional.nomeEmpresa ||
-        dsDadosAdicionais.getValue(0, "nomeUnidade") != objDadoAdicional.nomeUnidade ||
-        dsDadosAdicionais.getValue(0, "sobrenome") != objDadoAdicional.sobrenome ||
-        dsDadosAdicionais.getValue(0, "telefone") != objDadoAdicional.telefone ||
-        dsDadosAdicionais.getValue(0, "unidade") != objDadoAdicional.unidade) {
-        update = true;
-    }
+    for (var i = 0; i < arrFields.length; i++) {
+		if (dsDadosAdicionais.getValue(0, arrFields[i]) != objDadoAdicional[arrFields[i]]) {
+			update = true;
+		}
+	}
 
 	return update;
 }
@@ -152,34 +116,8 @@ function updateCard(dsDadosAdicionais, objDadoAdicional, fluigCompanyId, fluigUs
 		
 		var arrFields = returnFormFields(objDadoAdicional)
 
-		var postData = new java.lang.StringBuilder();
-		postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
-			postData.append('<soapenv:Header/>');
-			postData.append('<soapenv:Body>');
-				postData.append('<ws:updateCardData>');
-					postData.append('<companyId>' + fluigCompanyId + '</companyId>');
-					postData.append('<username>' + fluigUsuario + '</username>');
-					postData.append('<password>' + fluigSenha + '</password>');
-					postData.append('<cardId>' + cardId + '</cardId>');
-					postData.append('<cardData>');
-					for (var i = 0; i < arrFields.length; i++) {
-                        if (arrFields[i].fieldName == "dataInicioEmpresa" || arrFields[i].fieldName == "dataNascimento") {
-                            var dateUnixTimeStamp = Math.floor(new Date(arrFields[i].fieldValue).getTime()/1000)
-                            postData.append('<item>');
-                                postData.append('<field>' + arrFields[i].fieldName + 'Ts' + '</field>');
-                                postData.append('<value name="' + arrFields[i].fieldName + 'Ts' + '">' + dateUnixTimeStamp + '</value>');
-						    postData.append('</item>');    
-                        }
-                        
-						postData.append('<item>');
-							postData.append('<field>' + arrFields[i].fieldName + '</field>');
-							postData.append('<value name="' + arrFields[i].fieldName + '">' + arrFields[i].fieldValue + '</value>');
-						postData.append('</item>');
-					}
-					postData.append('</cardData>');
-				postData.append('</ws:updateCardData>');
-			postData.append('</soapenv:Body>');
-		postData.append('</soapenv:Envelope>');
+        var postData = new java.lang.StringBuilder();
+        postData = getUpdateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, cardId, arrFields);
 
 		var os = connection.getOutputStream();
 		os.write(postData.toString().getBytes());
@@ -192,6 +130,38 @@ function updateCard(dsDadosAdicionais, objDadoAdicional, fluigCompanyId, fluigUs
 	else {
 		return false;
 	}
+}
+
+function getUpdateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, cardId, arrFields) {
+    postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
+        postData.append('<soapenv:Header/>');
+        postData.append('<soapenv:Body>');
+            postData.append('<ws:updateCardData>');
+                postData.append('<companyId>' + fluigCompanyId + '</companyId>');
+                postData.append('<username>' + fluigUsuario + '</username>');
+                postData.append('<password>' + fluigSenha + '</password>');
+                postData.append('<cardId>' + cardId + '</cardId>');
+                postData.append('<cardData>');
+                for (var i = 0; i < arrFields.length; i++) {
+                    if (arrFields[i].fieldName == "dataInicioEmpresa" || arrFields[i].fieldName == "dataNascimento") {
+                        var dateUnixTimeStamp = Math.floor(new Date(arrFields[i].fieldValue).getTime()/1000)
+                        postData.append('<item>');
+                            postData.append('<field>' + arrFields[i].fieldName + 'Ts' + '</field>');
+                            postData.append('<value name="' + arrFields[i].fieldName + 'Ts' + '">' + dateUnixTimeStamp + '</value>');
+                        postData.append('</item>');    
+                    }
+                    
+                    postData.append('<item>');
+                        postData.append('<field>' + arrFields[i].fieldName + '</field>');
+                        postData.append('<value name="' + arrFields[i].fieldName + '">' + arrFields[i].fieldValue + '</value>');
+                    postData.append('</item>');
+                }
+                postData.append('</cardData>');
+            postData.append('</ws:updateCardData>');
+        postData.append('</soapenv:Body>');
+    postData.append('</soapenv:Envelope>');
+
+    return postData;
 }
 
 function createCard (objDadoAdicional, fluigCompanyId, fluigUsuario, fluigSenha) {
@@ -217,7 +187,19 @@ function createCard (objDadoAdicional, fluigCompanyId, fluigUsuario, fluigSenha)
 	
 	var arrFields = returnFormFields(objDadoAdicional)
 
-	var postData = new java.lang.StringBuilder();
+    var postData = new java.lang.StringBuilder();
+    postData = getCreateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, arrFields, objDadoAdicional, parentDocumentId);
+	
+	var os = connection.getOutputStream();
+    os.write(postData.toString().getBytes());
+	os.flush();
+	
+	var responseCode = connection.getResponseCode();
+
+	log.info("@@ Criado dado adicional " + objDadoAdicional.nomeCompleto + ":" + responseCode )
+}
+
+function getCreateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, arrFields, objDadoAdicional, parentDocumentId) {
     postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
         postData.append('<soapenv:Header/>');
         postData.append('<soapenv:Body>');
@@ -233,7 +215,7 @@ function createCard (objDadoAdicional, fluigCompanyId, fluigUsuario, fluigSenha)
                             postData.append('<cardData>');
                                 postData.append('<field>' + arrFields[i].fieldName + 'Ts' + '</field>');
                                 postData.append('<value name="' + arrFields[i].fieldName + 'Ts' + '">' + dateUnixTimeStamp + '</value>');
-						    postData.append('</cardData>');    
+                            postData.append('</cardData>');    
                         }
                         postData.append('<cardData>');
                             postData.append('<field>' + arrFields[i].fieldName + '</field>');
@@ -241,22 +223,16 @@ function createCard (objDadoAdicional, fluigCompanyId, fluigUsuario, fluigSenha)
                         postData.append('</cardData>');
                     }
                         postData.append(setDadosAdicionaisPermissions(arrFields, fluigCompanyId))
-						postData.append('<parentDocumentId>' + parentDocumentId + '</parentDocumentId>');
+                        postData.append('<parentDocumentId>' + parentDocumentId + '</parentDocumentId>');
                         postData.append('<documentDescription>' + objDadoAdicional.cargoNome + '</documentDescription>');
                         postData.append('<inheritSecurity>true</inheritSecurity>')
                     postData.append('</item>');
                 postData.append('</card>');
         postData.append('</ws:createCard>');
         postData.append('</soapenv:Body>');
-	postData.append('</soapenv:Envelope>');
-	
-	var os = connection.getOutputStream();
-    os.write(postData.toString().getBytes());
-	os.flush();
-	
-	var responseCode = connection.getResponseCode();
+    postData.append('</soapenv:Envelope>');
 
-	log.info("@@ Criado dado adicional " + objDadoAdicional.nomeCompleto + ":" + responseCode )
+    return postData;
 }
 
 function returnFormFields(objDadoAdicional) {    

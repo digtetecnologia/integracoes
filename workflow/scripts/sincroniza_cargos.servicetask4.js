@@ -33,8 +33,9 @@ function servicetask4(attempt, message) {
 		// Fim - Seu trecho de código para incluir os cargos no array resultSet
 
 		// A partir daqui não é necessário alterações no código
-		synchronizeCards(resultSet, fluigCompanyId, fluigUsuario, fluigSenha)
+		synchronizeCards(resultSet, fluigCompanyId, fluigUsuario, fluigSenha);
 
+		log.info("@@ Fim do servico sincroniza_cargos");
 	} catch (e) {
 		log.info("@@ Erro, estourou uma excecao");
 		log.info("@@ e.message: " + e.toString());
@@ -61,8 +62,6 @@ function synchronizeCards(resultSet, fluigCompanyId, fluigUsuario, fluigSenha) {
 			createCard(objCargo, fluigCompanyId, fluigUsuario, fluigSenha);
 		}
 	}
-
-	log.info("@@ Fim do servico sincroniza_cargos");
 }
 
 function needsToUpdate(objCargo, dsCargo) {

@@ -17,73 +17,39 @@ function servicetask4(attempt, message) {
 		
 		// Acesso ao RP
 		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:
-        // 1. lojaBairro: bairro da unidade
-        // 2. lojaCEP: código postal da unidade (ex. de preenchimento: '99999-999')
-        // 3. lojaCelular: celular de contato da unidade
-        // 4. lojaCidade: cidade em que se localiza a unidade (ex. de preenchimento: 'São Paulo')
-        // 5. lojaCnpjCpf: CNPJ ou CPF de cadastro da unidade (ex. de preenchimento: '99.999.999/9999-99' ou '999.999.999-99')
-        // 6. lojaComplemento: complemento do endereço da unidade (ex. de preenchimento: 'CJ 105')
-        // 7. lojaEmail: e-mail de contato da unidade
-        // 8. lojaEndereco: nome da rua, avenida, alameda, entre outros tipos de logradouros (ex. de preenchimento: 'Rua dos Bobos')
-        // 9. lojaEstado: estado em que se localiza a unidade (ex. de preenchimento: 'SP')
-        // 10. *lojaCodigo: código da unidade cadastrado no seu RP ou base de dados
-        // 11. *lojaNome: nome unidade
-        // 12. lojaNumero: numero do logradouro da unidade
-        // 13. lojaPais: país onde a unidade se localiza
-        // 14. lojaRazaoSocial: razão social da unidade da unidade
-        // 15. lojaTelefone: telefone de contato da unidade
-        // 16. nomeLojaCidade: (ex. de preenchimento: 'São Paulo - SP')
-		// 17. validarEndereco: (ex. de preenchimento: 'sim' - calculará latitude e longitude com base nos dados de endereço informados / 'nao' - calculará latitude e longitude com base nos dados de endereço informados)
-		// *campo de preenchimento obrigatório
 		// Precisamos das seguintes ações:
 		// 1. Para cada unidade retornada de seu RP, preencha o objeto 'objUnidade' com as devidas informações
 		// 2. Para cada 'objUnidade' criado, adicione o mesmo no array 'resultSet'
+		// *campo de preenchimento obrigatório
 
 		var resultSet = [];
 
 		// Inicio - Seu trecho de código para incluir os cargos no array resultSet
 			var objUnidade = {
-                lojaBairro: 'Santana',
-                lojaCEP: '98765-98',
-                lojaCelular: '(11) 98765-0987',
-                lojaCidade: 'São Paulo',
-                lojaCnpjCpf: '99.999.999/9999-99',
-                lojaComplemento: 'Conjunto 105',
-                lojaEmail: 'contato@mail.com.br',
-                lojaEndereco: 'Avenida Braz Leme',
-                lojaEstado: 'SP',
-                lojaCodigo: '16351236',
-                lojaNome: 'Unidade Zona Norte',
-                lojaNumero: '1000',
-                lojaPais: 'Brasil',
-                lojaRazaoSocial: 'Digte Tecnologia da Informação LTDA.',
-                lojaTelefone: '(11) 8765-0987',
-                nomeLojaCidade: 'São Paulo - SP',
-                validarEndereco: 'sim'
+                lojaBairro: 'Santana', // 1. lojaBairro: bairro da unidade
+                lojaCEP: '98765-98', // 2. lojaCEP: código postal da unidade (ex. de preenchimento: '99999-999')
+                lojaCelular: '(11) 98765-0987', // 3. lojaCelular: celular de contato da unidade
+                lojaCidade: 'São Paulo', // 4. lojaCidade: cidade em que se localiza a unidade (ex. de preenchimento: 'São Paulo')
+                lojaCnpjCpf: '99.999.999/9999-99', // 5. lojaCnpjCpf: CNPJ ou CPF de cadastro da unidade (ex. de preenchimento: '99.999.999/9999-99' ou '999.999.999-99')
+                lojaComplemento: 'Conjunto 105', // 6. lojaComplemento: complemento do endereço da unidade (ex. de preenchimento: 'CJ 105')
+                lojaEmail: 'contato@mail.com.br', // 7. lojaEmail: e-mail de contato da unidade
+                lojaEndereco: 'Avenida Braz Leme', // 8. lojaEndereco: nome da rua, avenida, alameda, entre outros tipos de logradouros (ex. de preenchimento: 'Rua dos Bobos')
+                lojaEstado: 'SP', // 9. lojaEstado: estado em que se localiza a unidade (ex. de preenchimento: 'SP')
+                lojaCodigo: '16351236', // 10. *lojaCodigo: código da unidade cadastrado no seu RP ou base de dados
+                lojaNome: 'Unidade Zona Norte', // 11. *lojaNome: nome unidade
+                lojaNumero: '1000', // 12. lojaNumero: numero do logradouro da unidade
+                lojaPais: 'Brasil', // 13. lojaPais: país onde a unidade se localiza
+                lojaRazaoSocial: 'Digte Tecnologia da Informação LTDA.', // 14. lojaRazaoSocial: razão social da unidade da unidade
+                lojaTelefone: '(11) 8765-0987', // 15. lojaTelefone: telefone de contato da unidade
+                nomeLojaCidade: 'São Paulo - SP', // 16. nomeLojaCidade: (ex. de preenchimento: 'São Paulo - SP')
+                validarEndereco: 'sim' // 17. validarEndereco: (ex. de preenchimento: 'sim' - calculará latitude e longitude com base nos dados de endereço informados / 'nao' - calculará latitude e longitude com base nos dados de endereço informados)
 			};
 
 			resultSet.push(objUnidade);
 		// Fim - Seu trecho de código para incluir os cargos no array resultSet
 
         // A partir daqui não é necessário alterações no código
-		for (var i = 0; i < resultSet.length; i++) {
-			var objUnidade = resultSet[i];
-			var c1 = DatasetFactory.createConstraint("lojaCodigo", objUnidade.lojaCodigo, objUnidade.lojaCodigo, ConstraintType.MUST);
-			var c2 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
-			var dsUnidade = DatasetFactory.getDataset(DATASET_NAME, null, [c1, c2], null);
-			
-			if (dsUnidade != null && dsUnidade.rowsCount > 0) {
-				if (needsToUpdate(objUnidade, dsUnidade)) {
-					updateCard(dsUnidade, objUnidade, fluigCompanyId, fluigUsuario, fluigSenha);
-				}
-				else {
-					continue;
-				}
-			}
-			else {
-				createCard(objUnidade, fluigCompanyId, fluigUsuario, fluigSenha);
-			}
-		}
+		synchronizeCards(resultSet, fluigCompanyId, fluigUsuario, fluigSenha)
 
 		log.info("@@ Fim do servico sincroniza_unidades");
 
@@ -94,27 +60,35 @@ function servicetask4(attempt, message) {
 	}
 }
 
+function synchronizeCards(resultSet, fluigCompanyId, fluigUsuario, fluigSenha) {
+	for (var i = 0; i < resultSet.length; i++) {
+		var objUnidade = resultSet[i];
+		var c1 = DatasetFactory.createConstraint("lojaCodigo", objUnidade.lojaCodigo, objUnidade.lojaCodigo, ConstraintType.MUST);
+		var c2 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
+		var dsUnidade = DatasetFactory.getDataset(DATASET_NAME, null, [c1, c2], null);
+		
+		if (dsUnidade != null && dsUnidade.rowsCount > 0) {
+			if (needsToUpdate(objUnidade, dsUnidade)) {
+				updateCard(dsUnidade, objUnidade, fluigCompanyId, fluigUsuario, fluigSenha);
+			}
+			else {
+				continue;
+			}
+		}
+		else {
+			createCard(objUnidade, fluigCompanyId, fluigUsuario, fluigSenha);
+		}
+	}
+}
+
 function needsToUpdate(objUnidade, dsUnidade) {
-    var update = false;
+	var update = false;
+	var arrFields = ["lojaBairro", "lojaCEP", "lojaCelular", "lojaCidade", "lojaCnpjCpf", "lojaComplemento", "lojaEmail", "lojaEndereco", "lojaEstado", "lojaCodigo", "lojaNome", "lojaNumero", "lojaPais", "lojaRazaoSocial", "lojaTelefone", "nomeLojaCidade", "validarEndereco"];
     
-    if (dsUnidade.getValue(0, "lojaBairro") != objUnidade.lojaBairro ||
-        dsUnidade.getValue(0, "lojaCEP") != objUnidade.lojaCEP ||
-        dsUnidade.getValue(0, "lojaCelular") != objUnidade.lojaCelular ||
-        dsUnidade.getValue(0, "lojaCidade") != objUnidade.lojaCidade ||
-        dsUnidade.getValue(0, "lojaCnpjCpf") != objUnidade.lojaCnpjCpf ||
-        dsUnidade.getValue(0, "lojaComplemento") != objUnidade.lojaComplemento ||
-        dsUnidade.getValue(0, "lojaEmail") != objUnidade.lojaEmail ||
-        dsUnidade.getValue(0, "lojaEndereco") != objUnidade.lojaEndereco ||
-        dsUnidade.getValue(0, "lojaEstado") != objUnidade.lojaEstado ||
-        dsUnidade.getValue(0, "lojaCodigo") != objUnidade.lojaCodigo ||
-        dsUnidade.getValue(0, "lojaNome") != objUnidade.lojaNome ||
-        dsUnidade.getValue(0, "lojaNumero") != objUnidade.lojaNumero ||
-        dsUnidade.getValue(0, "lojaPais") != objUnidade.lojaPais ||
-        dsUnidade.getValue(0, "lojaRazaoSocial") != objUnidade.lojaRazaoSocial ||
-        dsUnidade.getValue(0, "lojaTelefone") != objUnidade.lojaTelefone ||
-        dsUnidade.getValue(0, "nomeLojaCidade") != objUnidade.nomeLojaCidade ||
-        dsUnidade.getValue(0, "validarEndereco") != objUnidade.validarEndereco) {
+    for (var i = 0; i < arrFields.length; i++) {
+		if (dsUnidade.getValue(0, arrFields[i]) != objUnidade[arrFields[i]]) {
 			update = true;
+		}
 	}
 
 	return update;
@@ -136,25 +110,7 @@ function updateCard(dsUnidade, objUnidade, fluigCompanyId, fluigUsuario, fluigSe
 		var arrFields = returnFormFields(objUnidade)
 
 		var postData = new java.lang.StringBuilder();
-		postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
-			postData.append('<soapenv:Header/>');
-			postData.append('<soapenv:Body>');
-				postData.append('<ws:updateCardData>');
-					postData.append('<companyId>' + fluigCompanyId + '</companyId>');
-					postData.append('<username>' + fluigUsuario + '</username>');
-					postData.append('<password>' + fluigSenha + '</password>');
-					postData.append('<cardId>' + cardId + '</cardId>');
-					postData.append('<cardData>');
-					for (var i = 0; i < arrFields.length; i++) {
-						postData.append('<item>');
-							postData.append('<field>' + arrFields[i].fieldName + '</field>');
-							postData.append('<value name="' + arrFields[i].fieldName + '">' + arrFields[i].fieldValue + '</value>');
-						postData.append('</item>');
-					}
-					postData.append('</cardData>');
-				postData.append('</ws:updateCardData>');
-			postData.append('</soapenv:Body>');
-		postData.append('</soapenv:Envelope>');
+		postData = getUpdateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, cardId, arrFields);
 
 		var os = connection.getOutputStream();
 		os.write(postData.toString().getBytes());
@@ -167,6 +123,30 @@ function updateCard(dsUnidade, objUnidade, fluigCompanyId, fluigUsuario, fluigSe
 	else {
 		return false;
 	}
+}
+
+function getUpdateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, cardId, arrFields) {
+	postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
+		postData.append('<soapenv:Header/>');
+		postData.append('<soapenv:Body>');
+			postData.append('<ws:updateCardData>');
+				postData.append('<companyId>' + fluigCompanyId + '</companyId>');
+				postData.append('<username>' + fluigUsuario + '</username>');
+				postData.append('<password>' + fluigSenha + '</password>');
+				postData.append('<cardId>' + cardId + '</cardId>');
+				postData.append('<cardData>');
+				for (var i = 0; i < arrFields.length; i++) {
+					postData.append('<item>');
+						postData.append('<field>' + arrFields[i].fieldName + '</field>');
+						postData.append('<value name="' + arrFields[i].fieldName + '">' + arrFields[i].fieldValue + '</value>');
+					postData.append('</item>');
+				}
+				postData.append('</cardData>');
+			postData.append('</ws:updateCardData>');
+		postData.append('</soapenv:Body>');
+	postData.append('</soapenv:Envelope>');
+	
+	return postData;
 }
 
 function createCard (objUnidade, fluigCompanyId, fluigUsuario, fluigSenha) {
@@ -193,28 +173,7 @@ function createCard (objUnidade, fluigCompanyId, fluigUsuario, fluigSenha) {
 	var arrFields = returnFormFields(objUnidade)
 
 	var postData = new java.lang.StringBuilder();
-    postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
-        postData.append('<soapenv:Header/>');
-        postData.append('<soapenv:Body>');
-            postData.append('<ws:createCard>');
-                postData.append('<companyId>' + fluigCompanyId + '</companyId>');
-                postData.append('<username>' + fluigUsuario + '</username>');
-                postData.append('<password>' + fluigSenha + '</password>');
-                postData.append('<card>');
-                    postData.append('<item>');
-                    for (var i = 0; i < arrFields.length; i++) {
-                        postData.append('<cardData>');
-                            postData.append('<field>' + arrFields[i].fieldName + '</field>');
-                            postData.append('<value name="' + arrFields[i].fieldName + '">' + arrFields[i].fieldValue + '</value>');
-                        postData.append('</cardData>');
-                    }
-						postData.append('<parentDocumentId>' + parentDocumentId + '</parentDocumentId>');
-						postData.append('<documentDescription>' + objUnidade.lojaNome + '</documentDescription>');
-                    postData.append('</item>');
-                postData.append('</card>');
-        postData.append('</ws:createCard>');
-        postData.append('</soapenv:Body>');
-	postData.append('</soapenv:Envelope>');
+	postData = getCreateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, arrFields, objUnidade, parentDocumentId);
 	
 	var os = connection.getOutputStream();
     os.write(postData.toString().getBytes());
@@ -223,6 +182,33 @@ function createCard (objUnidade, fluigCompanyId, fluigUsuario, fluigSenha) {
 	var responseCode = connection.getResponseCode();
 
 	log.info("@@ Criado unidade " + objUnidade.lojaCodigo + ":" + responseCode )
+}
+
+function getCreateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, arrFields, objUnidade, parentDocumentId) {
+	postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
+		postData.append('<soapenv:Header/>');
+		postData.append('<soapenv:Body>');
+			postData.append('<ws:createCard>');
+				postData.append('<companyId>' + fluigCompanyId + '</companyId>');
+				postData.append('<username>' + fluigUsuario + '</username>');
+				postData.append('<password>' + fluigSenha + '</password>');
+				postData.append('<card>');
+					postData.append('<item>');
+					for (var i = 0; i < arrFields.length; i++) {
+						postData.append('<cardData>');
+							postData.append('<field>' + arrFields[i].fieldName + '</field>');
+							postData.append('<value name="' + arrFields[i].fieldName + '">' + arrFields[i].fieldValue + '</value>');
+						postData.append('</cardData>');
+					}
+						postData.append('<parentDocumentId>' + parentDocumentId + '</parentDocumentId>');
+						postData.append('<documentDescription>' + objUnidade.lojaNome + '</documentDescription>');
+					postData.append('</item>');
+				postData.append('</card>');
+		postData.append('</ws:createCard>');
+		postData.append('</soapenv:Body>');
+	postData.append('</soapenv:Envelope>');
+
+	return postData;
 }
 
 function returnFormFields(objUnidade) {    

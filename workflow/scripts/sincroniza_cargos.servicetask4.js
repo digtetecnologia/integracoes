@@ -1,8 +1,10 @@
 var parentDocumentId = 0;
 var colleagueId = "";
-var DATASET_NAME = "fdwt_estrutura_empresa_cargo"
-
-var FLUIG_DOMAIN = "<DOMINIO_DO_FLUIG>" // Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080
+var DATASET_NAME = "fdwt_estrutura_empresa_cargo";
+var FLUIG_DOMAIN = "<DOMINIO_DO_FLUIG>"; // Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080
+var fluigCompanyId = "";
+var fluigUsuario = "";
+var fluigSenha = "";
 
 function servicetask4(attempt, message) {
 	log.info("@@ Inicio do servico sincroniza_cargos");
@@ -11,9 +13,9 @@ function servicetask4(attempt, message) {
 		// Credenciais para consumo do serviço de fichas do fluig (ECMCardService)
 		// Preencher as variáveis 'fluigUsuario' e 'fluigSenha' com a identificação e a senha de um usuário com papel admin de seu ambiente fluig alvo
 		// Você pode inserir as credenciais de acesso ao RP nesta sessão também
-		var fluigCompanyId = getValue("WKCompany");
-		var fluigUsuario = "<CODIGO_DO_USUARIO>"; // Informe aqui a identificação do usuário
-		var fluigSenha = "<SENHA_DO_USUARIO>"; // Informe aqui a senha do usuário
+		fluigCompanyId = getValue("WKCompany");
+		fluigUsuario = "<CODIGO_DO_USUARIO>"; // Informe aqui a identificação do usuário
+		fluigSenha = "<SENHA_DO_USUARIO>"; // Informe aqui a senha do usuário
 		
 		// Acesso ao RP
 		// Precisamos das seguintes ações:
@@ -33,7 +35,7 @@ function servicetask4(attempt, message) {
 		// Fim - Seu trecho de código para incluir os cargos no array resultSet
 
 		// A partir daqui não é necessário alterações no código
-		synchronizeCards(resultSet, fluigCompanyId, fluigUsuario, fluigSenha);
+		synchronizeCards(resultSet);
 
 		log.info("@@ Fim do servico sincroniza_cargos");
 	} catch (e) {
@@ -43,7 +45,7 @@ function servicetask4(attempt, message) {
 	}
 }
 
-function synchronizeCards(resultSet, fluigCompanyId, fluigUsuario, fluigSenha) {
+function synchronizeCards(resultSet) {
 	for (var i = 0; i < resultSet.length; i++) {
 		var objCargo = resultSet[i];
 		var c1 = DatasetFactory.createConstraint("cargoId", objCargo.cargoId, objCargo.cargoId, ConstraintType.MUST);
@@ -52,14 +54,14 @@ function synchronizeCards(resultSet, fluigCompanyId, fluigUsuario, fluigSenha) {
 		
 		if (dsCargo != null && dsCargo.rowsCount > 0) {
 			if (needsToUpdate(objCargo, dsCargo)) {
-				updateCard(dsCargo, objCargo, fluigCompanyId, fluigUsuario, fluigSenha);
+				updateCard(dsCargo, objCargo);
 			}
 			else {
 				continue;
 			}
 		}
 		else {
-			createCard(objCargo, fluigCompanyId, fluigUsuario, fluigSenha);
+			createCard(objCargo);
 		}
 	}
 }
@@ -77,7 +79,7 @@ function needsToUpdate(objCargo, dsCargo) {
 	return update;
 }
 
-function updateCard(dsCargo, objCargo, fluigCompanyId, fluigUsuario, fluigSenha) {
+function updateCard(dsCargo, objCargo) {
 	var cardId = dsCargo.getValue(0, "metadata#Id");
 
 	if (cardId != 0) {
@@ -93,7 +95,7 @@ function updateCard(dsCargo, objCargo, fluigCompanyId, fluigUsuario, fluigSenha)
 		var arrFields = returnFormFields(objCargo)
 
 		var postData = new java.lang.StringBuilder();
-		postData = getUpdateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, cardId, arrFields);
+		postData = getUpdateXML(postData, cardId, arrFields);
 
 		var os = connection.getOutputStream();
 		os.write(postData.toString().getBytes());
@@ -108,7 +110,7 @@ function updateCard(dsCargo, objCargo, fluigCompanyId, fluigUsuario, fluigSenha)
 	}
 }
 
-function getUpdateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, cardId, arrFields) {
+function getUpdateXML(postData, cardId, arrFields) {
 	postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
 		postData.append('<soapenv:Header/>');
 		postData.append('<soapenv:Body>');
@@ -132,7 +134,7 @@ function getUpdateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, cardId
 	return postData;
 }
 
-function createCard (objCargo, fluigCompanyId, fluigUsuario, fluigSenha) {
+function createCard (objCargo) {
     if (parentDocumentId == 0) {
 		var c1 = DatasetFactory.createConstraint("datasetName", DATASET_NAME, DATASET_NAME, ConstraintType.MUST);
 		var c2 = DatasetFactory.createConstraint("activeVersion", true, true, ConstraintType.MUST);
@@ -156,7 +158,7 @@ function createCard (objCargo, fluigCompanyId, fluigUsuario, fluigSenha) {
 	var arrFields = returnFormFields(objCargo)
 
 	var postData = new java.lang.StringBuilder();
-	postData = getCreateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, arrFields, objCargo, parentDocumentId);
+	postData = getCreateXML(postData, arrFields, objCargo, parentDocumentId);
 	
 	var os = connection.getOutputStream();
     os.write(postData.toString().getBytes());
@@ -167,7 +169,7 @@ function createCard (objCargo, fluigCompanyId, fluigUsuario, fluigSenha) {
 	log.info("@@ Criado cargo " + objCargo.cargoId + ":" + responseCode )
 }
 
-function getCreateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, arrFields, objCargo, parentDocumentId) {
+function getCreateXML(postData, arrFields, objCargo, parentDocumentId) {
 	postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
 		postData.append('<soapenv:Header/>');
 		postData.append('<soapenv:Body>');

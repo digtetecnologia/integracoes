@@ -145,14 +145,7 @@ function getUpdateXML(postData, cardId, arrFields) {
                 postData.append('<cardId>' + cardId + '</cardId>');
                 postData.append('<cardData>');
                 for (var i = 0; i < arrFields.length; i++) {
-                    if (arrFields[i].fieldName == "dataInicioEmpresa" || arrFields[i].fieldName == "dataNascimento") {
-                        var dateUnixTimeStamp = Math.floor(new Date(arrFields[i].fieldValue).getTime()/1000)
-                        postData.append('<item>');
-                            postData.append('<field>' + arrFields[i].fieldName + 'Ts' + '</field>');
-                            postData.append('<value name="' + arrFields[i].fieldName + 'Ts' + '">' + dateUnixTimeStamp + '</value>');
-                        postData.append('</item>');    
-                    }
-                    
+                    postData = treatUnixTimeStamp('item', arrFields, postData);
                     postData.append('<item>');
                         postData.append('<field>' + arrFields[i].fieldName + '</field>');
                         postData.append('<value name="' + arrFields[i].fieldName + '">' + arrFields[i].fieldValue + '</value>');
@@ -212,13 +205,7 @@ function getCreateXML(postData, arrFields, objDadoAdicional, parentDocumentId) {
                 postData.append('<card>');
                     postData.append('<item>');
                     for (var i = 0; i < arrFields.length; i++) {
-                        if (arrFields[i].fieldName == "dataInicioEmpresa" || arrFields[i].fieldName == "dataNascimento") {
-                            var dateUnixTimeStamp = Math.floor(new Date(arrFields[i].fieldValue).getTime()/1000)
-                            postData.append('<cardData>');
-                                postData.append('<field>' + arrFields[i].fieldName + 'Ts' + '</field>');
-                                postData.append('<value name="' + arrFields[i].fieldName + 'Ts' + '">' + dateUnixTimeStamp + '</value>');
-                            postData.append('</cardData>');    
-                        }
+                        postData = treatUnixTimeStamp('cardData', arrFields, postData);
                         postData.append('<cardData>');
                             postData.append('<field>' + arrFields[i].fieldName + '</field>');
                             postData.append('<value name="' + arrFields[i].fieldName + '">' + arrFields[i].fieldValue + '</value>');
@@ -233,6 +220,18 @@ function getCreateXML(postData, arrFields, objDadoAdicional, parentDocumentId) {
         postData.append('</ws:createCard>');
         postData.append('</soapenv:Body>');
     postData.append('</soapenv:Envelope>');
+
+    return postData;
+}
+
+function treatUnixTimeStamp(type, arrFields, postData) {
+    if (arrFields[i].fieldName == "dataInicioEmpresa" || arrFields[i].fieldName == "dataNascimento") {
+        var dateUnixTimeStamp = Math.floor(new Date(arrFields[i].fieldValue).getTime()/1000)
+        postData.append('<' + type + '>');
+            postData.append('<field>' + arrFields[i].fieldName + 'Ts' + '</field>');
+            postData.append('<value name="' + arrFields[i].fieldName + 'Ts' + '">' + dateUnixTimeStamp + '</value>');
+        postData.append('</' + type + '>');    
+    }
 
     return postData;
 }

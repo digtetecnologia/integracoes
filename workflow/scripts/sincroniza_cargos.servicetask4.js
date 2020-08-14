@@ -2,7 +2,7 @@ var parentDocumentId = 0;
 var colleagueId = "";
 var DATASET_NAME = "fdwt_estrutura_empresa_cargo"
 
-var FLUIG_DOMAIN = "http://dev3.digte.com.br" // Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080
+var FLUIG_DOMAIN = "<DOMINIO_DO_FLUIG>" // Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080
 
 function servicetask4(attempt, message) {
 	log.info("@@ Inicio do servico sincroniza_cargos");
@@ -12,8 +12,8 @@ function servicetask4(attempt, message) {
 		// Preencher as variáveis 'fluigUsuario' e 'fluigSenha' com a identificação e a senha de um usuário com papel admin de seu ambiente fluig alvo
 		// Você pode inserir as credenciais de acesso ao RP nesta sessão também
 		var fluigCompanyId = getValue("WKCompany");
-		var fluigUsuario = "leonardo.giraldi"; // Informe aqui a identificação do usuário
-		var fluigSenha = "Digte@123"; // Informe aqui a senha do usuário
+		var fluigUsuario = "<CODIGO_DO_USUARIO>"; // Informe aqui a identificação do usuário
+		var fluigSenha = "<SENHA_DO_USUARIO>"; // Informe aqui a senha do usuário
 		
 		// Acesso ao RP
 		// Precisamos das seguintes ações:

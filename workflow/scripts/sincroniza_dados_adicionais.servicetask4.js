@@ -220,7 +220,6 @@ function getCreateXML(postData, arrFields, objDadoAdicional, parentDocumentId) {
         postData.append('</ws:createCard>');
         postData.append('</soapenv:Body>');
     postData.append('</soapenv:Envelope>');
-
     return postData;
 }
 

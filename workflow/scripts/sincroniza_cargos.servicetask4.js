@@ -2,7 +2,7 @@ var parentDocumentId = 0;
 var colleagueId = "";
 var DATASET_NAME = "fdwt_estrutura_empresa_cargo"
 
-var FLUIG_DOMAIN = "<DOMINIO_DO_FLUIG>" // Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080
+var FLUIG_DOMAIN = "http://dev3.digte.com.br" // Insira o domínio do ambiente fluig alvo, seguindo o exemplo: http://dev2.digte.com.br:8080
 
 function servicetask4(attempt, message) {
 	log.info("@@ Inicio do servico sincroniza_cargos");
@@ -12,50 +12,28 @@ function servicetask4(attempt, message) {
 		// Preencher as variáveis 'fluigUsuario' e 'fluigSenha' com a identificação e a senha de um usuário com papel admin de seu ambiente fluig alvo
 		// Você pode inserir as credenciais de acesso ao RP nesta sessão também
 		var fluigCompanyId = getValue("WKCompany");
-		var fluigUsuario = "<CODIGO_DO_USUARIO>"; // Informe aqui a identificação do usuário
-		var fluigSenha = "<SENHA_DO_USUARIO>"; // Informe aqui a senha do usuário
+		var fluigUsuario = "leonardo.giraldi"; // Informe aqui a identificação do usuário
+		var fluigSenha = "Digte@123"; // Informe aqui a senha do usuário
 		
 		// Acesso ao RP
-		// Implemente aqui o acesso ao seu RP retornando as seguintes informações:
-		// 1. *cargoId: Código do cargo
-		// 2. *cargoNome: Nome do cargo
-		// *campo de preenchimento obrigatório
 		// Precisamos das seguintes ações:
 		// 1. Para cada cargo retornado de seu RP, preencha o objeto 'objCargo' com as devidas informações
 		// 2. Para cada 'objCargo' criado, adicione o mesmo no array 'resultSet'
+		// *campo de preenchimento obrigatório
 
 		var resultSet = [];
 
 		// Inicio - Seu trecho de código para incluir os cargos no array resultSet
 			var objCargo = {
-				cargoNome: 'Analista de Dados',
-				cargoId: '6435438'
+				cargoId: '6435438', // 1. *cargoId: Código do cargo
+				cargoNome: 'Analista de Dados' // 2. *cargoNome: Nome do cargo
 			};
 
 			resultSet.push(objCargo);
 		// Fim - Seu trecho de código para incluir os cargos no array resultSet
 
 		// A partir daqui não é necessário alterações no código
-		for (var i = 0; i < resultSet.length; i++) {
-			var objCargo = resultSet[i];
-			var c1 = DatasetFactory.createConstraint("cargoId", objCargo.cargoId, objCargo.cargoId, ConstraintType.MUST);
-			var c2 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
-			var dsCargo = DatasetFactory.getDataset(DATASET_NAME, null, [c1, c2], null);
-			
-			if (dsCargo != null && dsCargo.rowsCount > 0) {
-				if (needsToUpdate(objCargo, dsCargo)) {
-					updateCard(dsCargo, objCargo, fluigCompanyId, fluigUsuario, fluigSenha);
-				}
-				else {
-					continue;
-				}
-			}
-			else {
-				createCard(objCargo, fluigCompanyId, fluigUsuario, fluigSenha);
-			}
-		}
-
-		log.info("@@ Fim do servico sincroniza_cargos");
+		synchronizeCards(resultSet, fluigCompanyId, fluigUsuario, fluigSenha)
 
 	} catch (e) {
 		log.info("@@ Erro, estourou uma excecao");
@@ -64,12 +42,37 @@ function servicetask4(attempt, message) {
 	}
 }
 
+function synchronizeCards(resultSet, fluigCompanyId, fluigUsuario, fluigSenha) {
+	for (var i = 0; i < resultSet.length; i++) {
+		var objCargo = resultSet[i];
+		var c1 = DatasetFactory.createConstraint("cargoId", objCargo.cargoId, objCargo.cargoId, ConstraintType.MUST);
+		var c2 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
+		var dsCargo = DatasetFactory.getDataset(DATASET_NAME, null, [c1, c2], null);
+		
+		if (dsCargo != null && dsCargo.rowsCount > 0) {
+			if (needsToUpdate(objCargo, dsCargo)) {
+				updateCard(dsCargo, objCargo, fluigCompanyId, fluigUsuario, fluigSenha);
+			}
+			else {
+				continue;
+			}
+		}
+		else {
+			createCard(objCargo, fluigCompanyId, fluigUsuario, fluigSenha);
+		}
+	}
+
+	log.info("@@ Fim do servico sincroniza_cargos");
+}
+
 function needsToUpdate(objCargo, dsCargo) {
 	var update = false;
+	var arrFields = ["cargoId", "cargoNome"];
 
-	if (dsCargo.getValue(0, "cargoId") != objCargo.cargoId || 
-		dsCargo.getValue(0, "cargoNome") != objCargo.cargoNome) {
+	for (var i = 0; i < arrFields.length; i++) {
+		if (dsCargo.getValue(0, arrFields[i]) != objCargo[arrFields[i]]) {
 			update = true;
+		}
 	}
 
 	return update;
@@ -91,25 +94,7 @@ function updateCard(dsCargo, objCargo, fluigCompanyId, fluigUsuario, fluigSenha)
 		var arrFields = returnFormFields(objCargo)
 
 		var postData = new java.lang.StringBuilder();
-		postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
-			postData.append('<soapenv:Header/>');
-			postData.append('<soapenv:Body>');
-				postData.append('<ws:updateCardData>');
-					postData.append('<companyId>' + fluigCompanyId + '</companyId>');
-					postData.append('<username>' + fluigUsuario + '</username>');
-					postData.append('<password>' + fluigSenha + '</password>');
-					postData.append('<cardId>' + cardId + '</cardId>');
-					postData.append('<cardData>');
-					for (var i = 0; i < arrFields.length; i++) {
-						postData.append('<item>');
-							postData.append('<field>' + arrFields[i].fieldName + '</field>');
-							postData.append('<value name="' + arrFields[i].fieldName + '">' + arrFields[i].fieldValue + '</value>');
-						postData.append('</item>');
-					}
-					postData.append('</cardData>');
-				postData.append('</ws:updateCardData>');
-			postData.append('</soapenv:Body>');
-		postData.append('</soapenv:Envelope>');
+		postData = getUpdateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, cardId, arrFields);
 
 		var os = connection.getOutputStream();
 		os.write(postData.toString().getBytes());
@@ -122,6 +107,30 @@ function updateCard(dsCargo, objCargo, fluigCompanyId, fluigUsuario, fluigSenha)
 	else {
 		return false;
 	}
+}
+
+function getUpdateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, cardId, arrFields) {
+	postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
+		postData.append('<soapenv:Header/>');
+		postData.append('<soapenv:Body>');
+			postData.append('<ws:updateCardData>');
+				postData.append('<companyId>' + fluigCompanyId + '</companyId>');
+				postData.append('<username>' + fluigUsuario + '</username>');
+				postData.append('<password>' + fluigSenha + '</password>');
+				postData.append('<cardId>' + cardId + '</cardId>');
+				postData.append('<cardData>');
+				for (var i = 0; i < arrFields.length; i++) {
+					postData.append('<item>');
+						postData.append('<field>' + arrFields[i].fieldName + '</field>');
+						postData.append('<value name="' + arrFields[i].fieldName + '">' + arrFields[i].fieldValue + '</value>');
+					postData.append('</item>');
+				}
+				postData.append('</cardData>');
+			postData.append('</ws:updateCardData>');
+		postData.append('</soapenv:Body>');
+	postData.append('</soapenv:Envelope>');
+
+	return postData;
 }
 
 function createCard (objCargo, fluigCompanyId, fluigUsuario, fluigSenha) {
@@ -148,28 +157,7 @@ function createCard (objCargo, fluigCompanyId, fluigUsuario, fluigSenha) {
 	var arrFields = returnFormFields(objCargo)
 
 	var postData = new java.lang.StringBuilder();
-    postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
-        postData.append('<soapenv:Header/>');
-        postData.append('<soapenv:Body>');
-            postData.append('<ws:createCard>');
-                postData.append('<companyId>' + fluigCompanyId + '</companyId>');
-                postData.append('<username>' + fluigUsuario + '</username>');
-                postData.append('<password>' + fluigSenha + '</password>');
-                postData.append('<card>');
-                    postData.append('<item>');
-                    for (var i = 0; i < arrFields.length; i++) {
-                        postData.append('<cardData>');
-                            postData.append('<field>' + arrFields[i].fieldName + '</field>');
-                            postData.append('<value name="' + arrFields[i].fieldName + '">' + arrFields[i].fieldValue + '</value>');
-                        postData.append('</cardData>');
-                    }
-						postData.append('<parentDocumentId>' + parentDocumentId + '</parentDocumentId>');
-						postData.append('<documentDescription>' + objCargo.cargoNome + '</documentDescription>');
-                    postData.append('</item>');
-                postData.append('</card>');
-        postData.append('</ws:createCard>');
-        postData.append('</soapenv:Body>');
-	postData.append('</soapenv:Envelope>');
+	postData = getCreateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, arrFields, objCargo, parentDocumentId);
 	
 	var os = connection.getOutputStream();
     os.write(postData.toString().getBytes());
@@ -178,6 +166,33 @@ function createCard (objCargo, fluigCompanyId, fluigUsuario, fluigSenha) {
 	var responseCode = connection.getResponseCode();
 
 	log.info("@@ Criado cargo " + objCargo.cargoId + ":" + responseCode )
+}
+
+function getCreateXML(postData, fluigCompanyId, fluigUsuario, fluigSenha, arrFields, objCargo, parentDocumentId) {
+	postData.append('<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.dm.ecm.technology.totvs.com/">');
+		postData.append('<soapenv:Header/>');
+		postData.append('<soapenv:Body>');
+			postData.append('<ws:createCard>');
+				postData.append('<companyId>' + fluigCompanyId + '</companyId>');
+				postData.append('<username>' + fluigUsuario + '</username>');
+				postData.append('<password>' + fluigSenha + '</password>');
+				postData.append('<card>');
+					postData.append('<item>');
+					for (var i = 0; i < arrFields.length; i++) {
+						postData.append('<cardData>');
+							postData.append('<field>' + arrFields[i].fieldName + '</field>');
+							postData.append('<value name="' + arrFields[i].fieldName + '">' + arrFields[i].fieldValue + '</value>');
+						postData.append('</cardData>');
+					}
+						postData.append('<parentDocumentId>' + parentDocumentId + '</parentDocumentId>');
+						postData.append('<documentDescription>' + objCargo.cargoNome + '</documentDescription>');
+					postData.append('</item>');
+				postData.append('</card>');
+		postData.append('</ws:createCard>');
+		postData.append('</soapenv:Body>');
+	postData.append('</soapenv:Envelope>');
+
+	return postData;
 }
 
 function returnFormFields(objCargo) {    

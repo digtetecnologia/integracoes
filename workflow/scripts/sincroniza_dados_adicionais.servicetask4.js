@@ -70,11 +70,20 @@ function servicetask4(attempt, message) {
 function synchronizeCards(resultSet) {
     for (var i = 0; i < resultSet.length; i++) {
         var objDadoAdicional = resultSet[i];
-        var c1 = DatasetFactory.createConstraint("matricula", objDadoAdicional.matricula, objDadoAdicional.matricula, ConstraintType.SHOULD);
-        var c2 = DatasetFactory.createConstraint("login", objDadoAdicional.login, objDadoAdicional.login, ConstraintType.SHOULD);
-        var c3 = DatasetFactory.createConstraint("email", objDadoAdicional.email, objDadoAdicional.email, ConstraintType.SHOULD);
-        var c4 = DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST);
-        var dsDadosAdicionais = DatasetFactory.getDataset(DATASET_NAME, null, [c1, c2, c3, c4], null);
+        var constraints = []
+
+        if (objDadoAdicional.matricula == '.' || objDadoAdicional.login == '.' || objDadoAdicional.email == '.') {
+            constraints.push(DatasetFactory.createConstraint("nomeCompleto", objDadoAdicional.nomeCompleto, objDadoAdicional.nomeCompleto, ConstraintType.MUST))       
+        }
+        else {
+            constraints.push(DatasetFactory.createConstraint("matricula", objDadoAdicional.matricula, objDadoAdicional.matricula, ConstraintType.SHOULD))
+            constraints.push(DatasetFactory.createConstraint("login", objDadoAdicional.login, objDadoAdicional.login, ConstraintType.SHOULD))
+            constraints.push(DatasetFactory.createConstraint("email", objDadoAdicional.email, objDadoAdicional.email, ConstraintType.SHOULD))
+        }
+        
+        constraints.push(DatasetFactory.createConstraint("metadata#active", true, true, ConstraintType.MUST))
+        
+        var dsDadosAdicionais = DatasetFactory.getDataset(DATASET_NAME, null, constraints, null);
         
         if (dsDadosAdicionais != null && dsDadosAdicionais.rowsCount > 0) {
             if (needsToUpdate(objDadoAdicional, dsDadosAdicionais)) {
